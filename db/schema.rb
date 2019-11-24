@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_141618) do
 
   create_table "logs", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
