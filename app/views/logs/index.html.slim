@@ -1,0 +1,8 @@
+p logs index
+= link_to "追加", new_log_path
+
+- @logs.each do |log|
+  p = log.id
+  p = log.title
+  p = log.description
+  = link_to "見る", log_path(id: log.id)

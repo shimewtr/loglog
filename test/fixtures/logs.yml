@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+log_1:
+  id: 1
+  title: ログのタイトル1
+  description: ログの説明文1
+
+log_2:
+  id: 2
+  title: ログのタイトル2
+  description: ログの説明文2
