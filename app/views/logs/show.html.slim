@@ -2,6 +2,12 @@ p log show
 p = @log.id
 p = @log.title
 p = @log.description
+- @log.values.each do |value|
+  p
+    = value.value
+    = link_to "数値を削除", value_path(id: value.id, log_id: @log.id), method: :delete
+
+= render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
 
 = link_to "編集", edit_log_path(id: @log.id)
 = link_to "削除", log_path, method: :delete, data: { confirm: "削除してよろしいですか？" }
