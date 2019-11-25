@@ -15,7 +15,7 @@ class LogsController < ApplicationController
   end
 
   def create
-    @log = Log.new(log_prams)
+    @log = current_user.logs.build(log_prams)
     if @log.save
       redirect_to logs_path, notice: "#{@log.title}を作成しました"
     else

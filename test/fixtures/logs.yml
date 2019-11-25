@@ -2,10 +2,12 @@
 
 log_1:
   id: 1
+  user_id: 1
   title: ログのタイトル1
   description: ログの説明文1
 
 log_2:
   id: 2
+  user_id: 2
   title: ログのタイトル2
   description: ログの説明文2
