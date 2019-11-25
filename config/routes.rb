@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :users
 
   resources :logs
+
+  resources :values, only: [:create, :destroy]
 end

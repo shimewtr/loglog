@@ -1,0 +1,4 @@
+= form_with model: value, url: values_path(log_id: @log.id) do |f|
+  = f.label :value
+  = f.text_area :value
+  = f.submit "追加"

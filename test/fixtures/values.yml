@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+log_1_value_1:
+  log_id: 1
+  value: 1.1
+
+log_1_value_2:
+  log_id: 1
+  value: 1.2
+
+log_2_value_1:
+  log_id: 2
+  value: 2.5
+
+log_2_value_2:
+  log_id: 2
+  value: 5.0
