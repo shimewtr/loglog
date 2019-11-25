@@ -1,9 +1,11 @@
 user_1:
+  id: 1
   email: user_1@email.com
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>
 
 user_2:
+  id: 2
   email: user_2@email.com
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>
