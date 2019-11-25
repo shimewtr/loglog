@@ -1,0 +1,11 @@
+h1 Sessions#new
+= link_to "ユーザー登録", new_user_path
+
+= form_tag login_path, method: :post do
+  = label_tag :email
+  = text_field_tag :email
+
+  = label_tag :password
+  = password_field_tag :password
+
+  = submit_tag "Login"
