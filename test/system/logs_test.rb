@@ -3,6 +3,10 @@
 require "application_system_test_case"
 
 class LogsTest < ApplicationSystemTestCase
+  setup do
+    login_user("user_1@email.com", "secret")
+  end
+
   test "Logの一覧が表示されるか" do
     visit root_path
     assert_text "logs index"
@@ -45,8 +49,6 @@ class LogsTest < ApplicationSystemTestCase
     accept_confirm do
       click_link "削除"
     end
-
-    assert_no_text "ログのタイトル1"
-    assert_no_text "ログの説明文1"
+    assert_text "ログのタイトル1を削除しました"
   end
 end
