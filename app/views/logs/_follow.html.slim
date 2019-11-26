@@ -1,0 +1,3 @@
+- form_for(current_user.following_logs.build(log_id: @log.id)) do |f|
+  - f.hidden_field :user_id
+  = f.submit "Follow"

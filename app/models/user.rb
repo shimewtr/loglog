@@ -10,4 +10,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :logs
+
+  has_many :log_followings
 end
