@@ -7,4 +7,9 @@ class Log < ApplicationRecord
   belongs_to :user
 
   has_many :values
+  has_many :log_followings
+
+  def following_by?(user)
+    log_followings.where(user_id: user.id).exists?
+  end
 end
