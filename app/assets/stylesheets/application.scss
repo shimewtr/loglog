@@ -1,0 +1,14 @@
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import "./reset/reset";
+@import "./variables/*";
+// @import "./mixin/*";
+@import "./blocks/**/*";
+@import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+
+html {
+  min-height: 100vh;
+  background-color: $background;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}

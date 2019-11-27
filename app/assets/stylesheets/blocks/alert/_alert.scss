@@ -1,0 +1,21 @@
+.alert {
+  box-sizing: border-box;
+  margin-bottom: 1.875rem;
+  padding: $padding-alert-notice;
+  width: 100%;
+  border-radius: $border-alert-notice;
+  font-size: $font-alert-notice;
+  line-height: 1.25rem;
+
+  &-success {
+    border: solid 1px $border-alert-success;
+    background-color: $background-alert-success;
+    color: $font-alert-success;
+  }
+
+  &-warning {
+    border: solid 1px $border-alert-warning;
+    background-color: $background-alert-warning;
+    color: $font-alert-warning;
+  }
+}
