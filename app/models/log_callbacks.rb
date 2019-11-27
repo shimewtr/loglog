@@ -2,13 +2,15 @@
 
 class LogCallbacks
   def after_create(log)
-    sender_user = User.find(log.user_id)
-    feed = log.feeds.new(
-      # ToDo user_id
-      user_id: log.user_id,
-      sender_id: log.user_id,
-      action: :log_create
-    )
-    feed.save if feed.valid?
+    create_feed(log)
   end
+
+  private
+    def create_feed(log)
+      sender = User.find(log.user_id)
+      target_users = sender.followers
+      target_users.each do |target|
+        Feed.create_log(target, log)
+      end
+    end
 end

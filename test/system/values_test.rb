@@ -4,7 +4,7 @@ require "application_system_test_case"
 
 class ValuesTest < ApplicationSystemTestCase
   setup do
-    login_user("user_1@email.com", "aaaa")
+    login_user("loglog.user.1@gmail.com", "aaaa")
   end
 
   test "Logページにvalueが表示されるか" do

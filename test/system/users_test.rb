@@ -17,13 +17,13 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "Userページが正しく表示されるか" do
-    login_user("user_1@email.com", "aaaa")
+    login_user("loglog.user.1@gmail.com", "aaaa")
     visit user_path(@user)
-    assert_text "user_1@email.com"
+    assert_text "loglog.user.1@gmail.com"
   end
 
   test "ログインユーザー以外は編集と削除が表示されないか" do
-    login_user("user_1@email.com", "aaaa")
+    login_user("loglog.user.1@gmail.com", "aaaa")
     visit user_path(@user)
     assert_text "編集"
     assert_text "削除"
@@ -34,7 +34,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "Userの情報を更新できるか" do
-    login_user("user_1@email.com", "aaaa")
+    login_user("loglog.user.1@gmail.com", "aaaa")
     visit user_path(@user)
     click_link "編集"
 
@@ -45,7 +45,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "Userを削除できるか" do
-    login_user("user_1@email.com", "aaaa")
+    login_user("loglog.user.1@gmail.com", "aaaa")
     visit user_path(@user)
     accept_confirm do
       click_link "削除"
