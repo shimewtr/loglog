@@ -1,6 +1,29 @@
 p = @user.id
 p = @user.email
 
+p フォロー一覧
+- if @user.followings.exists?
+  - @user.followings.each do |following|
+    p
+      = following.id
+      = following.email
+- else
+  p フォローしているユーザーがいません
+
+p フォロワー一覧
+- if @user.followers.exists?
+  - @user.followers.each do |follower|
+    p
+      = follower.id
+      = follower.email
+- else
+  p フォロワーユーザーがいません
+
 - if @user == current_user
   = link_to "編集", edit_user_path
   = link_to "削除", user_path, method: :delete, data: { confirm: "削除してよろしいですか？" }
+- else
+  - if @user.followed_by?(current_user)
+    = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete
+  - else
+    = link_to "フォロー", user_follow_relationships_path(@user), method: :post
