@@ -1,0 +1,35 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1.5rem 0 1rem;
+  width: 100%;
+  background-color: $background-footer;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: $width-footer-content;
+    height: 100%;
+  }
+}
+
+.footer-github-link {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.footer-copy {
+  margin-bottom: 5px;
+  color: $font-footer;
+  font-size: $font-footer-link;
+}
+
+.footer-icon {
+  color: $font-footer;
+  font-size: $font-footer-link;
+}
