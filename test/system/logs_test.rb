@@ -4,7 +4,7 @@ require "application_system_test_case"
 
 class LogsTest < ApplicationSystemTestCase
   setup do
-    login_user("user_1@email.com", "secret")
+    login_user("user_1@email.com", "aaaa")
   end
 
   test "Logの一覧が表示されるか" do
