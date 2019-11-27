@@ -1,0 +1,72 @@
+.feeds {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__title {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    color: $font-main;
+    font-weight: bold;
+    font-size: $font-feeds-title;
+  }
+
+  &__items {
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 0.5rem 0.875rem;
+    min-height: 4rem;
+    max-height: 11rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: $background-content;
+  }
+
+  &__none-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 4rem;
+    color: $font-sub;
+    font-size: $font-feed-nonetext;
+  }
+
+  & div:last-child {
+    border: none;
+  }
+}
+
+.feed {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 0.5rem;
+  height: $height-feed;
+  border-bottom: 1px solid $border;
+
+  &__icon {
+    height: 80%;
+    border-radius: 50%;
+  }
+}
+
+.feed-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0.5rem;
+  width: 100%;
+  height: 100%;
+
+  &__date {
+    margin-bottom: 0.25rem;
+    color: $font-sub;
+    font-size: $font-feed-subtext;
+  }
+
+  &__text {
+    color: $font-main;
+    font-size: $font-feed-text;
+  }
+}
