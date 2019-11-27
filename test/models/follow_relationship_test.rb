@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class LogFollowingsControllerTest < ActionDispatch::IntegrationTest
+class FollowRelationshipTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

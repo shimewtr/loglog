@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+follow_relationship_1_2:
+  following_id: 1
+  follower_id: 2
+
+follow_relationship_1_3:
+  following_id: 1
+  follower_id: 3
+
+follow_relationship_2_1:
+  following_id: 2
+  follower_id: 1
+
+follow_relationship_3_2:
+  following_id: 3
+  follower_id: 2
