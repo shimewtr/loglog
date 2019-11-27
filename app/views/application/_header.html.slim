@@ -6,6 +6,12 @@ header.header
         p.header-logo__title LogLog
     .header-profile
       - if current_user
+        = link_to new_log_path, class: "header-new-log__link" do
+          .header-link__icon = icon "fas", "plus-square"
+          p.header-link__text 作成
+        = link_to logout_path, method: :delete, class: "header-logout__link" do
+          .header-link__icon = icon "fas", "door-open"
+          p.header-link__text ログアウト
         = link_to user_path(current_user), class: "header-profile__link" do
           = image_tag current_user.gravatar_url, alt: "タイトルロゴ", class: "header-profile__icon"
       - else
