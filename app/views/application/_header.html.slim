@@ -1,0 +1,12 @@
+header.header
+  .header-content
+    = link_to root_path, class: "header-logo-link" do
+      .header-logo
+        .header-logo__icon = icon "fas", "chart-bar"
+        p.header-logo__title LogLog
+    .header-profile
+      - if current_user
+        = link_to user_path(current_user), class: "header-profile__link" do
+          = image_tag current_user.gravatar_url, alt: "タイトルロゴ", class: "header-profile__icon"
+      - else
+        p ユーザー登録

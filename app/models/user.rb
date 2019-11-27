@@ -26,4 +26,8 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
+
+  def gravatar_url
+    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}?r=g&d=mp"
+  end
 end
