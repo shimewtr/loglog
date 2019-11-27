@@ -9,7 +9,7 @@ p = @log.description
 
 = render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
 
-- if current_user.id == @log.id
+- if current_user.id == @log.user_id
   = link_to "編集", edit_log_path(id: @log.id)
   = link_to "削除", log_path, method: :delete, data: { confirm: "削除してよろしいですか？" }
 

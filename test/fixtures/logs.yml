@@ -11,3 +11,9 @@ log_2:
   user_id: 2
   title: ログのタイトル2
   description: ログの説明文2
+
+log_3:
+  id: 3
+  user_id: 3
+  title: ログのタイトル3
+  description: ログの説明文3

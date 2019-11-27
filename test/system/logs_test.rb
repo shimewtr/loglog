@@ -4,12 +4,11 @@ require "application_system_test_case"
 
 class LogsTest < ApplicationSystemTestCase
   setup do
-    login_user("user_1@email.com", "secret")
+    login_user("loglog.user.1@gmail.com", "aaaa")
   end
 
   test "Logの一覧が表示されるか" do
     visit root_path
-    assert_text "logs index"
     assert_text "ログのタイトル1"
     assert_text "ログの説明文2"
   end

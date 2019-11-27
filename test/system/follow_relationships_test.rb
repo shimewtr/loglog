@@ -4,7 +4,7 @@ require "application_system_test_case"
 
 class FllowRelationshipsTest < ApplicationSystemTestCase
   setup do
-    login_user("user_1@email.com", "secret")
+    login_user("loglog.user.1@gmail.com", "aaaa")
     @user_1 = users(:user_1)
     @user_2 = users(:user_2)
     @user_3 = users(:user_3)
