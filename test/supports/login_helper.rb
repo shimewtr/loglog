@@ -5,6 +5,6 @@ module LoginHelper
     visit welcome_path
     fill_in("email", with: login_name)
     fill_in("password", with: password)
-    click_button "Login"
+    click_button "ログイン"
   end
 end

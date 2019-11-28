@@ -15,4 +15,6 @@ header.header
         = link_to user_path(current_user), class: "header-profile__link" do
           = image_tag current_user.gravatar_url, alt: "タイトルロゴ", class: "header-profile__icon"
       - else
-        p ユーザー登録
+        = link_to new_user_path, class: "header-logout__link" do
+          .header-link__icon = icon "fas", "user-plus"
+          p.header-link__text ユーザー登録

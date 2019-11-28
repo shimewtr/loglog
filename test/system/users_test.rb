@@ -10,6 +10,7 @@ class UsersTest < ApplicationSystemTestCase
   test "Userを作成できるか" do
     visit new_user_path
     fill_in "user_email", with: "test@email.com"
+    fill_in "name", with: "user_name"
     fill_in "user_password", with: "aaaa"
     fill_in "user_password_confirmation", with: "aaaa"
     click_button "作成"
@@ -39,6 +40,8 @@ class UsersTest < ApplicationSystemTestCase
     click_link "編集"
 
     fill_in "user_email", with: "update_email@test.com"
+    fill_in "name", with: "update_name"
+    fill_in "user_description", with: "自己紹介を更新"
     click_button "作成"
     assert_text "更新しました"
     assert_text "update_email@test.com"
