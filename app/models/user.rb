@@ -7,7 +7,19 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+
+  validates :name,
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 15 },
+            format: {
+              allow_blank: true,
+              with: /\A\w+\z/,
+              message: "は英文字と_（アンダーバー）のみが使用できます"
+            }
+
+  validates :description, length: { maximum: 200, too_long: "は最大200文字まで入力できます。" }
 
   has_many :logs
 

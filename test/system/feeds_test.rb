@@ -4,7 +4,7 @@ require "application_system_test_case"
 
 class FeedsTest < ApplicationSystemTestCase
   test "フォローしているユーザーがログを作成したときフィードが追加されるか" do
-    login_user("3.user.loglog@gmail.com", "aaaa")
+    login_user("loglog.user.3@gmail.com", "aaaa")
     visit new_log_path
     fill_in "log_title", with: "作成するログのタイトル"
     fill_in "log_description", with: "作成するログの説明文"
@@ -12,22 +12,22 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_text "3.user.loglog@gmail.com さんが「作成するログのタイトル」を作成しました。"
+    assert_text "loglog.user.3@gmail.com さんが「作成するログのタイトル」を作成しました。"
   end
 
   test "フォローしているユーザーがログを更新したときフィードが追加されるか" do
-    login_user("3.user.loglog@gmail.com", "aaaa")
+    login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
     click_button "追加"
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_text "3.user.loglog@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
   end
 
   test "フォローしてないユーザーがログを作成したときフィードが追加されないか" do
-    login_user("3.user.loglog@gmail.com", "aaaa")
+    login_user("loglog.user.3@gmail.com", "aaaa")
     visit new_log_path
     fill_in "log_title", with: "作成するログのタイトル"
     fill_in "log_description", with: "作成するログの説明文"
@@ -35,22 +35,22 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.2@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "3.user.loglog@gmail.com さんが「作成するログのタイトル」を作成しました。"
+    assert_no_text "loglog.user.3@gmail.com さんが「作成するログのタイトル」を作成しました。"
   end
 
   test "フォローしてないユーザーがログを更新したときフィードが追加されないか" do
-    login_user("3.user.loglog@gmail.com", "aaaa")
+    login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
     click_button "追加"
 
     login_user("loglog.user.2@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "3.user.loglog@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_no_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
   end
 
   test "ログが削除されたとき関連するフィードが削除されるか" do
-    login_user("3.user.loglog@gmail.com", "aaaa")
+    login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
     click_button "追加"
@@ -61,11 +61,11 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "3.user.loglog@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_no_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
   end
 
   test "ユーザーが削除されたとき関連するフィードが削除されるか" do
-    login_user("3.user.loglog@gmail.com", "aaaa")
+    login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
     click_button "追加"
@@ -76,6 +76,6 @@ class FeedsTest < ApplicationSystemTestCase
     end
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "3.user.loglog@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_no_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
   end
 end

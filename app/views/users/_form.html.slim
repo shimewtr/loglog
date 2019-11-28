@@ -1,11 +1,30 @@
-= form_with model: user, local: true do |f|
-  = f.label :email
-  = f.text_field :email, placeholder: "example@exsample.com"
+.user-form
+  = form_with model: user, local: true do |f|
+    .form-group
+      = f.label :email, class: "form__label"
+      p.form__sub-label ご自身のメールアドレスを入力してください。
+      = f.text_field :email, class: "form__text-field", placeholder: "example@exsample.com"
 
-  = f.label :password
-  = f.password_field :password
+    .form-group
+      = f.label :name, class: "form__label"
+      p.form__sub-label アカウント名を入力してください。半角英字と_（アンダーバー）が使用できます。（最大15文字）
+      = f.text_field :name, placeholder: "name", class: "form__text-field", maxlength: "15"
 
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
+    - if from == :edit
+      .form-group
+        = f.label :description, class: "form__label"
+        p.form__sub-label 自己紹介文を入力してください。（最大200文字）
+        = f.text_area :description, class: "form__text-area", maxlength: "200"
 
-  = f.submit "作成"
+    .form-group
+      = f.label :password, class: "form__label"
+      p.form__sub-label パスワードを入力してください。
+      = f.password_field :password, class: "form__text-field"
+
+    .form-group
+      = f.label :password_confirmation, class: "form__label"
+      p.form__sub-label 確認のためもう一度パスワードを入力してください。
+      = f.password_field :password_confirmation, class: "form__text-field"
+
+    .form-group
+      = f.submit "作成", class: "form__button"
