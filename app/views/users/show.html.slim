@@ -1,29 +1,28 @@
-p = @user.id
-p = @user.email
+.user
+  .user-profile
+    .user-profile-icon
+      = image_tag @user.gravatar_url, alt: "タイトルロゴ", class: "user-profile-icon__image"
+    .user-profile-text
+      p.user-profile-text__name = @user.name
+      .user-profile-links
+        - if @user == current_user
+          = link_to "編集", edit_user_path, class: "user-profile-links__link--edit"
+          = link_to "削除", user_path, method: :delete, class: "user-profile-links__link--delete", data: { confirm: "削除してよろしいですか？" }
+        - else
+          - if @user.followed_by?(current_user)
+            = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete, class: "user-profile-links__link--unfollow"
+          - else
+            = link_to "フォロー", user_follow_relationships_path(@user), method: :post, class: "user-profile-links__link--follow"
+      p.user-profile-text__description = safe_join(@user.description.split("\n"), tag(:br))
 
-p フォロー一覧
-- if @user.followings.exists?
-  - @user.followings.each do |following|
-    p
-      = following.id
-      = following.email
-- else
-  p フォローしているユーザーがいません
+  = render "logs/list", logs: @user.logs, user_data: false
 
-p フォロワー一覧
-- if @user.followers.exists?
-  - @user.followers.each do |follower|
-    p
-      = follower.id
-      = follower.email
-- else
-  p フォロワーユーザーがいません
-
-- if @user == current_user
-  = link_to "編集", edit_user_path
-  = link_to "削除", user_path, method: :delete, data: { confirm: "削除してよろしいですか？" }
-- else
-  - if @user.followed_by?(current_user)
-    = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete
-  - else
-    = link_to "フォロー", user_follow_relationships_path(@user), method: :post
+  .relation-tab
+    input#follow-tab type="radio" name="relation-tab__item" checked=true
+    label.relation-tab__item.relation-tab__item-follow for="follow-tab" フォロー
+    input#follower-tab type="radio" name="relation-tab__item"
+    label.relation-tab__item.relation-tab__item-follower for="follower-tab" フォロワー
+    #follow-tab__content.relation-tab__content
+      = render "relations", users: @user.followings, none_text: "フォローしているユーザーがいません"
+    #follower-tab__content.relation-tab__content
+      = render "relations", users: @user.followers, none_text: "フォロワーがいません"

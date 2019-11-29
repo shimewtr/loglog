@@ -26,7 +26,8 @@
         p.log-data__date = @log.values.order(updated_at: :desc).take.updated_at.strftime("%Y/%m/%d %H:%M")
   p.log-description = safe_join(@log.description.split("\n"), tag(:br))
 
-  = render "chart", log: @log
+  .log-chart
+    = render "chart", log: @log, width: "580px", height: "380px", display_axis: true
 
   - if @log.values.exists?
     table

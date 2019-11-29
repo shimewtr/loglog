@@ -1,0 +1,8 @@
+p.logs-list__title ログ一覧
+.logs-list
+  - if logs.exists?
+    - logs.each do |log|
+      = link_to log_path(log), class: "log-cell__link" do
+        = render "logs/chart_cell", log: log, user_data: user_data
+  - else
+    p ログがありません。

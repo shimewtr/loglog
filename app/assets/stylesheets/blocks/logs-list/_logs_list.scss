@@ -1,0 +1,22 @@
+.logs-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__title {
+    margin-bottom: 0.875rem;
+    width: 100%;
+    color: $font-main;
+    font-size: 1rem;
+  }
+
+  &>.log-cell__link {
+    margin-right: 44px;
+    margin-bottom: 22px;
+  }
+
+  &>.log-cell__link:nth-child(2n) {
+    margin-right: 0;
+  }
+}

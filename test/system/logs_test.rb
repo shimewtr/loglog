@@ -10,7 +10,7 @@ class LogsTest < ApplicationSystemTestCase
   test "Logの一覧が表示されるか" do
     visit root_path
     assert_text "ログのタイトル1"
-    assert_text "ログの説明文2"
+    assert_text "ログのタイトル2"
   end
 
   test "Logを作成できるか" do

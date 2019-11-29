@@ -20,7 +20,7 @@ class UsersTest < ApplicationSystemTestCase
   test "Userページが正しく表示されるか" do
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit user_path(@user)
-    assert_text "loglog.user.1@gmail.com"
+    assert_text "Robert"
   end
 
   test "ログインユーザー以外は編集と削除が表示されないか" do
@@ -44,7 +44,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "user_description", with: "自己紹介を更新"
     click_button "作成"
     assert_text "更新しました"
-    assert_text "update_email@test.com"
+    assert_text "update_name"
   end
 
   test "Userを削除できるか" do

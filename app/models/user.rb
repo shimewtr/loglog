@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   validates :description, length: { maximum: 200, too_long: "は最大200文字まで入力できます。" }
 
-  has_many :logs
+  has_many :logs, dependent: :destroy
 
   has_many :log_followings
   has_many :follow_logs, through: :log_followings, source: :log
