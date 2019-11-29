@@ -16,7 +16,7 @@ class LogsTest < ApplicationSystemTestCase
   test "Logを作成できるか" do
     visit root_path
     click_on "作成"
-    assert_text "log new"
+    assert_text "新しいログ"
 
     fill_in "log_title", with: "作成するログのタイトル"
     fill_in "log_description", with: "作成するログの説明文"

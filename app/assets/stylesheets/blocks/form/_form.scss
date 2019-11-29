@@ -10,10 +10,14 @@
   background-color: $background-content;
 }
 
+.log-form {
+  @extend .user-form;
+}
+
 form {
   width: 100%;
 
-  & div:nth-last-of-type(2) {
+  &>div:nth-last-of-type(2) {
     margin-bottom: 1rem;
   }
 }
@@ -120,6 +124,190 @@ form {
 
     @include button-shadow(2px);
   }
+}
+
+.form-item {
+  &__radio-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+
+    &>.form-radio-button {
+      margin-right: 5%;
+      margin-bottom: 0.5rem;
+    }
+
+    &>.form-radio-button:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}
+
+.form-radio-button {
+  box-sizing: border-box;
+  width: 30%;
+  height: 3rem;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-right: 18px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    height: 3rem;
+    border: 1px solid $border;
+    border-radius: 3px;
+    color: $font-main;
+    transition: all .2s;
+  }
+
+  &__red-label {
+    color: $graph-color-red;
+  }
+
+  &__blue-label {
+    color: $graph-color-blue;
+  }
+
+  &__blue-label {
+    color: $graph-color-blue;
+  }
+
+  &__green-label {
+    color: $graph-color-green;
+  }
+
+  &__orange-label {
+    color: $graph-color-orange;
+  }
+
+  &__purple-label {
+    color: $graph-color-purple;
+  }
+
+  &__pink-label {
+    color: $graph-color-pink;
+  }
+
+  &__brown-label {
+    color: $graph-color-brown;
+  }
+
+  &input {
+    opacity: 0 +position(absolute)
+  }
+}
+
+.form-radio-inline__input {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+
+  &:checked+.form-radio-button__label {
+    border: 1px solid $main;
+    background-color: rgba($main, 0.8);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__red-label {
+    border: 1px solid $graph-color-red;
+    background-color: rgba($graph-color-red, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__blue-label {
+    border: 1px solid $graph-color-blue;
+    background-color: rgba($graph-color-blue, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__blue-label {
+    border: 1px solid $graph-color-blue;
+    background-color: rgba($graph-color-blue, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__green-label {
+    border: 1px solid $graph-color-green;
+    background-color: rgba($graph-color-green, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__orange-label {
+    border: 1px solid $graph-color-orange;
+    background-color: rgba($graph-color-orange, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__purple-label {
+    border: 1px solid $graph-color-purple;
+    background-color: rgba($graph-color-purple, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__pink-label {
+    border: 1px solid $graph-color-pink;
+    background-color: rgba($graph-color-pink, 0.6);
+    color: #fff;
+  }
+
+  &:checked+.form-radio-button__brown-label {
+    border: 1px solid $graph-color-brown;
+    background-color: rgba($graph-color-brown, 0.6);
+    color: #fff;
+  }
+}
+
+.form-label-icon {
+  margin-right: 0.5rem;
+}
+
+.form-label-red-icon {
+  margin-right: 0.5rem;
+  color: $graph-color-red;
+}
+
+.form-label-blue-icon {
+  color: $graph-color-blue;
+
+  @extend .form-label-icon;
+}
+
+.form-label-green-icon {
+  color: $graph-color-green;
+
+  @extend .form-label-icon;
+}
+
+.form-label-orange-icon {
+  color: $graph-color-orange;
+
+  @extend .form-label-icon;
+}
+
+.form-label-purple-icon {
+  color: $graph-color-purple;
+
+  @extend .form-label-icon;
+}
+
+.form-label-pink-icon {
+  color: $graph-color-pink;
+
+  @extend .form-label-icon;
+}
+
+.form-label-brown-icon {
+  color: $graph-color-brown;
+
+  @extend .form-label-icon;
+}
+
+.form-label-text {
+  width: 70%;
 }
 
 .js-count-text {
