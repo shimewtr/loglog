@@ -42,6 +42,6 @@ class LogsController < ApplicationController
     end
 
     def log_prams
-      params.require(:log).permit(:title, :description)
+      params.require(:log).permit(:title, :description, :color, :graph)
     end
 end

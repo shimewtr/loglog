@@ -1,8 +1,39 @@
-= form_with model: log, local: true do |f|
-  = f.label :title
-  = f.text_field :title, placeholder: "ログのタイトル"
+.log-form
+  = form_with model: log, local: true do |f|
+    .form-group
+      = f.label :title, class: "form__label"
+      p.form__sub-label ログのタイトルを入力してください。
+      = f.text_field :title, placeholder: "ログのタイトル", class: "form__text-field"
 
-  = f.label :description
-  = f.text_area :description, placeholder: "ログの説明文"
+    .form-group
+      = f.label :description, class: "form__label"
+      p.form__sub-label どんなログなのか説明文を入力してください。
+      = f.text_area :description, placeholder: "ログの説明文", class: "form__text-area"
 
-  = f.submit "作成"
+    .form-group
+      = f.label :graph, class: "form__label"
+      p.form__sub-label グラフの種類を選択してください。
+      .form-item__radio-buttons
+        .form-radio-button
+          = f.radio_button :graph, :column, class: "form-radio-inline__input", checked: true
+          = f.label :graph, value: :column, class: "form-radio-button__label"
+            .form-label-icon = icon "fas", "chart-bar"
+            span.form-label-text 帯グラフ
+        .form-radio-button
+          = f.radio_button :graph, :line, class: "form-radio-inline__input"
+          = f.label :graph, value: :line, class: "form-radio-button__label"
+            .form-label-icon = icon "fas", "chart-line"
+            span.form-label-text 線グラフ
+
+    .form-group
+      = f.label :color, class: "form__label"
+      p.form__sub-label グラフの色を選択してください。
+      .form-item__radio-buttons
+        - Log.colors.keys.each do |color|
+          .form-radio-button
+            = f.radio_button :color, color.to_s, class: "form-radio-inline__input"
+            = f.label :color, value: color.to_s, class: "form-radio-button__label form-radio-button__#{color}-label"
+              = icon "fas", "square", class: "form-label-#{color}-icon"
+              span.form-label-text = color.to_s.capitalize
+    .form-group
+      = f.submit "作成", class: "form__button"
