@@ -1,0 +1,122 @@
+.log {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: $background-content;
+}
+
+.log-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  &__title {
+    width: 50%;
+    color: $font-main;
+    font-size: $font-log-title;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50%;
+    height: $font-log-title;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: 0.5rem;
+    padding: 0 0.875rem;
+    height: 100%;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: $font-log-link;
+
+    &--edit {
+      border: 1px solid $border;
+      color: $font-sub;
+
+      @extend .log-header__link;
+    }
+
+    &--delete {
+      border: 1px solid $border-alert-warning;
+      background-color: $background-alert-warning;
+      color: $font-alert-warning;
+
+      @extend .log-header__link;
+    }
+  }
+}
+
+.log-data {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 2.5rem;
+
+  &__text {
+    margin-bottom: 0.5rem;
+    color: $font-sub;
+    font-size: 0.75rem;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 1.5rem;
+    text-decoration: none;
+
+    &-icon {
+      margin-right: 0.25rem;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    &-name {
+      color: $font-main;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+
+    @extend .log-data__profile-name;
+  }
+}
+
+.log-description {
+  margin-bottom: 3rem;
+  width: 100%;
+  color: $font-main;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.log-chart {
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,7 @@
+.log-chart
+  - @height = "380px"
+  - @width = "580px"
+  - if log.graph == "column"
+    = render "column_chart", log: @log
+  - elsif log.graph == "line"
+    = render "line_chart", log: @log
