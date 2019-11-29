@@ -1,0 +1,54 @@
+.log-cell {
+  box-sizing: border-box;
+  padding-top: 0.5rem;
+  width: 260px;
+  border: 1px solid $border;
+  border-radius: 0.5rem;
+  pointer-events: none;
+
+  @include cell-shadow(0.2);
+
+  &__none-text {
+    height: 170px;
+    color: $font-sub;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.875rem;
+    line-height: 170px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}
+
+.log-cell-data {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  width: 100%;
+  border-top: 1px solid $border;
+
+  &__title {
+    margin-bottom: 0.25rem;
+    color: $font-main;
+  }
+}
+
+.log-cell-data-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 0.25rem;
+
+  &__icon {
+    height: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  &__name {
+    color: $font-sub;
+    font-size: 0.75rem;
+  }
+}

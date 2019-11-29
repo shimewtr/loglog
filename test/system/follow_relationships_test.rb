@@ -14,18 +14,20 @@ class FllowRelationshipsTest < ApplicationSystemTestCase
   test "ユーザーをフォローできるか" do
     visit user_path(@user_4)
     assert_not @user_4.followed_by?(@user_1)
-    assert_no_text @user_1.id
+    assert_no_text @user_1.name
     click_link "フォロー"
-    assert_text @user_1.id
+    find(".relation-tab__item-follower").click
+    assert_text @user_1.name
     assert @user_4.followed_by?(@user_1)
   end
 
   test "ユーザーをアンフォローできるか" do
     visit user_path(@user_3)
     assert @user_3.followed_by?(@user_1)
-    assert_text @user_1.id
+    find(".relation-tab__item-follower").click
+    assert_text @user_1.name
     click_link "フォロー解除"
-    assert_no_text @user_1.id
+    assert_no_text @user_1.name
     assert_not @user_3.followed_by?(@user_1)
   end
 end

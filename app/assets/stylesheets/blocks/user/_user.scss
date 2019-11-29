@@ -1,0 +1,144 @@
+.user {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1rem 1rem 5rem;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: $background-content;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.user-profile-links {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+  height: $font-log-title;
+
+
+  &__link {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: 0.5rem;
+    padding: 0 0.875rem;
+    height: 100%;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: $font-log-link;
+
+    &--edit {
+      border: 1px solid $border;
+      color: $font-sub;
+
+      @extend .log-header__link;
+    }
+
+    &--delete {
+      border: 1px solid $border-alert-warning;
+      background-color: $background-alert-warning;
+      color: $font-alert-warning;
+
+      @extend .log-header__link;
+    }
+
+    &--follow {
+      border: 1px solid $border;
+      color: $font-sub;
+
+      @extend .log-header__link;
+    }
+
+    &--unfollow {
+      border: 1px solid $border-alert-warning;
+      background-color: $background-alert-warning;
+      color: $font-alert-warning;
+
+      @extend .log-header__link;
+    }
+  }
+}
+
+.user-profile-icon {
+  margin-right: 5%;
+  width: 15%;
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+}
+
+.user-profile-text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+
+  &__name {
+    width: 50%;
+    color: $font-main;
+    font-size: $font-log-title;
+  }
+
+  &__description {
+    width: 100%;
+    color: $font-main;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 3rem;
+    text-decoration: none;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    height: 90%;
+    border-radius: 50%;
+  }
+
+  &__name {
+    color: $font-main;
+    font-size: 1rem;
+  }
+
+  &>.users-list__item {
+    border-bottom: 1px solid $border;
+  }
+
+  &>.users-list__item:last-child {
+    border-bottom: none;
+  }
+
+  &__none-text {
+    width: 100%;
+    color: $font-sub;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+}

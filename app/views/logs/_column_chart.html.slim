@@ -1,4 +1,5 @@
 = column_chart log.values.group("date(created_at)").sum(:value), \
   colors: [chart_color(log)],\
-  height: "380px",\
-  width: "580px"
+  height: height,\
+  width: width,\
+  library: { scales: { xAxes: [ { display: display_axis } ], yAxes: [ { display: display_axis } ] } }

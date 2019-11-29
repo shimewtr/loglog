@@ -1,0 +1,44 @@
+.relation-tab {
+  margin: 0 auto;
+  width: 90%;
+
+  &__content {
+    display: none;
+    clear: both;
+    overflow: hidden;
+    padding-top: 1.5rem;
+  }
+
+  input:checked+.relation-tab__item {
+    border-bottom: 3px solid $main;
+    color: $main;
+  }
+}
+
+.relation-tab__item {
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  width: 50%;
+  height: 3rem;
+  border-bottom: 1px solid $border;
+  color: $font-sub;
+  text-align: center;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 3rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input[name="relation-tab__item"] {
+  display: none;
+}
+
+#follow-tab:checked~#follow-tab__content,
+#follower-tab:checked~#follower-tab__content {
+  display: block;
+}

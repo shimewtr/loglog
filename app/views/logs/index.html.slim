@@ -1,12 +1,5 @@
 = render "feeds/new_feeds"
-- @logs.each do |log|
-  p = log.id
-  p = log.title
-  p = log.description
-  = link_to "見る", log_path(id: log.id)
+= render "logs/list", logs: @logs, user_data: true
 
 p フォローしているログ
-- current_user.follow_logs.each do |log|
-  p = log.id
-  p = log.title
-  p = log.description
+= render "logs/list", logs: current_user.follow_logs, user_data: true

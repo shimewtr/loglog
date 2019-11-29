@@ -1,0 +1,8 @@
+.users-list
+  - if users.exists?
+    - users.each do |user|
+      = link_to user_path(user), class: "users-list__item" do
+        = image_tag user.gravatar_url, alt: "タイトルロゴ", class: "users-list__icon"
+        p.users-list__name = user.name
+  - else
+    p.users-list__none-text = none_text

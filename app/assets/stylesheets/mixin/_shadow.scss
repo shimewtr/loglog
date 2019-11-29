@@ -5,3 +5,7 @@
 @mixin button-shadow($size) {
   filter: drop-shadow($size $size $size rgba(0, 0, 0, 0.2));
 }
+
+@mixin cell-shadow($alpha) {
+  box-shadow: rgba(#000, $alpha) 0.125rem 0.125rem .1rem
+}

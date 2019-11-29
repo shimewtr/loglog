@@ -1,0 +1,11 @@
+.log-cell
+  - if log.values.exists?
+    = render "logs/chart", log: log, height: "170px", width: "260px", display_axis: false
+  - else
+    p.log-cell__none-text データがありません。
+  .log-cell-data
+    p.log-cell-data__title = log.title
+    - if user_data
+      .log-cell-data-profile
+        = image_tag log.user.gravatar_url, alt: "タイトルロゴ", class: "log-cell-data-profile__icon"
+        p.log-cell-data-profile__name = log.user.name
