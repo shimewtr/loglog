@@ -1,0 +1,4 @@
+= line_chart log.values.group("date(created_at)").sum(:value), \
+  colors: [chart_color(log)],\
+  height: @height,\
+  width: @width

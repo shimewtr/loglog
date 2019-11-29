@@ -1,19 +1,44 @@
-p log show
-p = @log.id
-p = @log.title
-p = @log.description
-- @log.values.each do |value|
-  p
-    = value.value
-    = link_to "数値を削除", value_path(id: value.id, log_id: @log.id), method: :delete
+.log
+  .log-header
+    p.log-header__title = @log.title
+    .log-header__links
+      - if current_user == @log.user
+        = link_to "編集", edit_log_path(@log), class: "log-header__link--edit"
+        = link_to "削除", log_path(@log), method: :delete, class: "log-header__link--delete", data: { confirm: "削除してよろしいですか？" }
+      - else
+        - if @log.following_by?(current_user)
+          = link_to "フォロー解除", log_log_following_path(log_id: @log.id), method: :delete, class: "log-header__link--unfollow"
+        - else
+          = link_to "フォロー", log_log_followings_path(log_id: @log.id), method: :post, class: "log-header__link--follow"
 
-= render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
+  .log-data
+    .log-data__box
+      p.log-data__text 作成者
+      = link_to user_path(@log.user), class: "log-data__profile" do
+        = image_tag @log.user.gravatar_url, alt: "タイトルロゴ", class: "log-data__profile-icon"
+        p.log-data__profile-name = @log.user.name
+    .log-data__box
+      p.log-data__text 作成日
+      p.log-data__date = @log.created_at.strftime("%Y/%m/%d %H:%M")
+    - if @log.values.exists?
+      .log-data__box
+        p.log-data__text 最終更新日
+        p.log-data__date = @log.values.order(updated_at: :desc).take.updated_at.strftime("%Y/%m/%d %H:%M")
+  p.log-description = safe_join(@log.description.split("\n"), tag(:br))
 
-- if current_user.id == @log.user_id
-  = link_to "編集", edit_log_path(id: @log.id)
-  = link_to "削除", log_path, method: :delete, data: { confirm: "削除してよろしいですか？" }
+  = render "chart", log: @log
 
-- if @log.following_by?(current_user)
-  = link_to "フォロー解除", log_log_following_path(log_id: @log.id), method: :delete
-- else
-  = link_to "フォロー", log_log_followings_path(log_id: @log.id), method: :post
+  - if @log.values.exists?
+    table
+      thead
+        tr
+          th 数値
+          th 日時
+          th 削除
+      - @log.values.each do |value|
+        tr
+          td = value.value
+          td = value.created_at.strftime("%Y/%m/%d %H:%M")
+          td = link_to "数値を削除", value_path(id: value.id, log_id: @log.id), method: :delete
+
+  = render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
