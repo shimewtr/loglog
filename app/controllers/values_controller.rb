@@ -24,7 +24,7 @@ class ValuesController < ApplicationController
 
   private
     def value_params
-      params.permit(:value)
+      params.permit(:value, :valued_on)
     end
 
     def set_value

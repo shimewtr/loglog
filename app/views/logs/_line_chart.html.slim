@@ -1,4 +1,4 @@
-= line_chart log.values.group("date(created_at)").sum(:value), \
+= line_chart log.values.pluck(:valued_on, :value), \
   colors: [chart_color(log)],\
   height: height,\
   width: width,\

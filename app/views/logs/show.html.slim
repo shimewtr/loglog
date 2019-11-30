@@ -39,7 +39,8 @@
       - @log.values.each do |value|
         tr
           td = value.value
-          td = value.created_at.strftime("%Y/%m/%d %H:%M")
+          td = value.valued_on.strftime("%Y/%m/%d")
           td = link_to "数値を削除", value_path(id: value.id, log_id: @log.id), method: :delete
 
-  = render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
+  - if @log.user == current_user
+    = render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value

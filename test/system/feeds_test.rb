@@ -19,6 +19,7 @@ class FeedsTest < ApplicationSystemTestCase
     login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
+    fill_in "valued_on", with: Date.current
     click_button "追加"
 
     login_user("loglog.user.1@gmail.com", "aaaa")
@@ -42,6 +43,7 @@ class FeedsTest < ApplicationSystemTestCase
     login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
+    fill_in "valued_on", with: Date.current
     click_button "追加"
 
     login_user("loglog.user.2@gmail.com", "aaaa")
@@ -68,6 +70,7 @@ class FeedsTest < ApplicationSystemTestCase
     login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
     fill_in "value", with: "5.0"
+    fill_in "valued_on", with: Date.current
     click_button "追加"
 
     visit user_path(users(:user_3))
