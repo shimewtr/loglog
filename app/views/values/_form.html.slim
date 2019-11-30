@@ -2,5 +2,5 @@
   = f.label :value
   = f.text_field :value
   = f.label :valued_on
-  = f.date_field :valued_on
+  = f.date_field :valued_on, value: Date.current
   = f.submit "追加"
