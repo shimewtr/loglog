@@ -16,6 +16,7 @@ class ValuesTest < ApplicationSystemTestCase
   test "Logにvalueを追加できるか" do
     visit log_path(logs(:log_1))
     fill_in "value", with: "5.0"
+    fill_in "valued_on", with: Date.current
     click_button "追加"
     assert_text "5.0"
   end

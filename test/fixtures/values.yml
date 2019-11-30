@@ -3,15 +3,19 @@
 log_1_value_1:
   log_id: 1
   value: 1.1
+  valued_on: <%= 1.day.ago %>
 
 log_1_value_2:
   log_id: 1
   value: 1.2
+  valued_on: <%= 2.day.ago %>
 
 log_2_value_1:
   log_id: 2
   value: 2.5
+  valued_on: <%= 1.day.ago %>
 
 log_2_value_2:
   log_id: 2
   value: 5.0
+  valued_on: <%= 2.day.ago %>

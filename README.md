@@ -1,24 +1,27 @@
-# README
+# LogLog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CircleCI](https://circleci.com/gh/wawawatataru/loglog.svg?style=svg)](https://circleci.com/gh/wawawatataru/loglog)
 
-Things you may want to cover:
+## Lint&Test
 
-* Ruby version
+下記の lint とテストが実装されます。
 
-* System dependencies
+```
+$ ./bin/lintest
+```
 
-* Configuration
+## Lint
 
-* Database creation
+rubocop と slim-lint が実行されます。
 
-* Database initialization
+```
+$ ./bin/lint
+```
 
-* How to run the test suite
+## Test
 
-* Services (job queues, cache servers, search engines, etc.)
+model のテストと system テストが実行されます。
 
-* Deployment instructions
-
-* ...
+```
+$ ./bin/test
+```
