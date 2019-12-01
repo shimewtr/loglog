@@ -1,4 +1,4 @@
-.feed
+=link_to feed_link(feed), class: "feed"
   = image_tag feed.sender.gravatar_url, alt: "feed_sender_avatar", class: "feed__icon"
   .feed-content
     p.feed-content__date = feed.created_at.strftime("%Y/%m/%d %H:%M")

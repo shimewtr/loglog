@@ -32,7 +32,7 @@
     font-size: $font-feed-nonetext;
   }
 
-  & div:last-child {
+  & .feed:last-child {
     border: none;
   }
 }
@@ -44,6 +44,7 @@
   padding-left: 0.5rem;
   height: $height-feed;
   border-bottom: 1px solid $border;
+  text-decoration: none;
 
   &__icon {
     height: 80%;
