@@ -1,6 +1,11 @@
 = form_with model: value, url: values_path(log_id: @log.id) do |f|
-  = f.label :value
-  = f.text_field :value
-  = f.label :valued_on
-  = f.date_field :valued_on, value: Date.current
-  = f.submit "追加"
+  .form-group
+    = f.label :value, class: "form__label"
+    p.form__sub-label 数値を入力してください。
+    = f.text_field :value, class: "form__text-field"
+  .form-group
+    = f.label :valued_on, class: "form__label"
+    p.form__sub-label 日にちを選択してください。
+    = f.date_field :valued_on, value: Date.current, class: "form__date-field"
+  .form-group
+    = f.submit "追加", class: "form__button"

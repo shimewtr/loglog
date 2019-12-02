@@ -47,7 +47,7 @@ class LogsTest < ApplicationSystemTestCase
   test "Logを削除できるか" do
     visit log_path(id: 1)
     accept_confirm do
-      click_link "削除"
+      click_link "削除", match: :first
     end
     assert_text "ログのタイトル1を削除しました。"
   end

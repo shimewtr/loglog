@@ -58,7 +58,7 @@ class FeedsTest < ApplicationSystemTestCase
     click_button "追加"
     sleep 3
     accept_confirm do
-      click_link "削除"
+      click_link "削除", match: :first
     end
 
     login_user("loglog.user.1@gmail.com", "aaaa")

@@ -29,18 +29,28 @@
   .log-chart
     = render "chart", log: @log, width: "580px", height: "380px", display_axis: true
 
-  - if @log.values.exists?
-    table
-      thead
-        tr
-          th 数値
-          th 日時
-          th 削除
-      - @log.values.each do |value|
-        tr
-          td = value.value
-          td = value.valued_on.strftime("%Y/%m/%d")
-          td = link_to "数値を削除", value_path(id: value.id, log_id: @log.id), method: :delete
+  .log-values
+    p.log-values__title ログデータ一覧
+    - if @log.values.exists?
+      table.log-values-table
+        thead.log-values-table__thead
+          tr.log-values-table__thead-tr
+            th.log-values-table__thead-th--date 日にち
+            th.log-values-table__thead-th--value 数値
+            - if @log.user == current_user
+              th.log-values-table__th--button
+        - @log.values.default_order.each do |value|
+          tr.log-values-table__tr
+            td.log-values-table__th--date = value.valued_on.strftime("%Y/%m/%d")
+            td.log-values-table__th--value = value.value
+            - if @log.user == current_user
+              td.log-values-table__th--button = link_to "削除",\
+              value_path(id: value.id, log_id: @log.id),\
+              method: :delete,\
+              class: "log-values-table__button",\
+              data: { confirm: "削除してよろしいですか？" }
 
   - if @log.user == current_user
-    = render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
+    .value-form
+      p.value-form__title データを追加する
+      = render "/values/form", from: :new, url: values_path(log_id: @log.id), value: @value
