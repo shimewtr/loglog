@@ -17,7 +17,7 @@ class LogsController < ApplicationController
   def create
     @log = current_user.logs.build(log_prams)
     if @log.save
-      redirect_to logs_path, notice: "#{@log.title}を作成しました"
+      redirect_to log_path(@log), notice: "#{@log.title}を作成しました。"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class LogsController < ApplicationController
 
   def update
     if @log.update(log_prams)
-      redirect_to log_path(id: @log.id), notice: "#{@log.title}を更新しました"
+      redirect_to log_path(@log), notice: "#{@log.title}を更新しました。"
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class LogsController < ApplicationController
 
   def destroy
     @log.destroy
-    redirect_to logs_path, notice: "#{@log.title}を削除しました"
+    redirect_to logs_path, notice: "#{@log.title}を削除しました。"
   end
 
   private

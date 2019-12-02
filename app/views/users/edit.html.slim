@@ -1,6 +1,1 @@
-- if @user.errors.any?
-  .alert.alert-warning
-    - @user.errors.full_messages.each do |msg|
-      p.alert__message = msg
-
 = render "form", from: :edit, url: user_path, user: @user

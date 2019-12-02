@@ -46,4 +46,5 @@ class Feed < ApplicationRecord
       followed_id: follower.id,
       action: :following_follow
     )
+  end
 end
