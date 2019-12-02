@@ -20,4 +20,12 @@ module LogsHelper
       "#795548"
     end
   end
+
+  def log_submit_label(from)
+    if from == :new
+      "作成"
+    else
+      "更新"
+    end
+  end
 end

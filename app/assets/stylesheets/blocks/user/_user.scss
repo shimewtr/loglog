@@ -96,6 +96,7 @@
   &__description {
     width: 100%;
     color: $font-main;
+    word-break: break-all;
     font-size: 0.875rem;
     line-height: 1.5rem;
   }

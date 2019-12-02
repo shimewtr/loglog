@@ -22,7 +22,7 @@ class LogsTest < ApplicationSystemTestCase
     fill_in "log_description", with: "作成するログの説明文"
     click_button "作成"
 
-    assert_text "作成するログのタイトル"
+    assert_text "作成するログのタイトルを作成しました。"
   end
 
   test "Logの詳細ページが表示できるか" do
@@ -37,8 +37,9 @@ class LogsTest < ApplicationSystemTestCase
 
     fill_in "log_title", with: "更新後のログのタイトル"
     fill_in "log_description", with: "更新後のログの説明文"
-    click_button "作成"
+    click_button "更新"
 
+    assert_text "更新後のログのタイトルを更新しました。"
     assert_text "更新後のログのタイトル"
     assert_text "更新後のログの説明文"
   end
@@ -48,6 +49,14 @@ class LogsTest < ApplicationSystemTestCase
     accept_confirm do
       click_link "削除"
     end
-    assert_text "ログのタイトル1を削除しました"
+    assert_text "ログのタイトル1を削除しました。"
+  end
+
+  test "ログ作成したユーザー以外は編集が表示されないか" do
+    visit log_path(id: 1)
+    assert_text "編集"
+
+    visit log_path(id: 2)
+    assert_no_text "編集"
   end
 end

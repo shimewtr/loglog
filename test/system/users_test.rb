@@ -42,9 +42,10 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "user_email", with: "update_email@test.com"
     fill_in "name", with: "update_name"
     fill_in "user_description", with: "自己紹介を更新"
-    click_button "作成"
-    assert_text "更新しました"
+    click_button "更新"
+    assert_text "ユーザー情報を更新しました"
     assert_text "update_name"
+    assert_text "自己紹介を更新"
   end
 
   test "Userを削除できるか" do
@@ -53,6 +54,6 @@ class UsersTest < ApplicationSystemTestCase
     accept_confirm do
       click_link "削除"
     end
-    assert_text "削除しました"
+    assert_text "ユーザーを削除しました。"
   end
 end

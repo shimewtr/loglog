@@ -1,3 +1,8 @@
+- if user.errors.any?
+  .alert.alert-warning
+    - user.errors.full_messages.each do |msg|
+      p.alert__message = msg
+
 .user-form
   = form_with model: user, local: true do |f|
     .form-group
@@ -27,4 +32,4 @@
       = f.password_field :password_confirmation, class: "form__text-field"
 
     .form-group
-      = f.submit "作成", class: "form__button"
+      = f.submit user_submit_label(from), class: "form__button"

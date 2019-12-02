@@ -16,8 +16,13 @@ class Log < ApplicationRecord
     line: 1
   }, _prefix: true
 
-  validates :title,  presence: true
-  validates :description,  presence: true
+  validates :title,
+            presence: { message: "を入力してください。" },
+            length: { maximum: 40, too_long: "は最大40文字まで入力できます。" }
+
+  validates :description,
+            presence: { message: "を入力してください。" },
+            length: { maximum: 200, too_long: "は最大200文字まで入力できます。" }
 
   belongs_to :user
 

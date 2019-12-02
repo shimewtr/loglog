@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(id: @user.id), notice: "更新しました"
+      redirect_to user_path(id: @user.id), notice: "ユーザー情報を更新しました。"
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, notice: "削除しました"
+    redirect_to root_path, notice: "ユーザーを削除しました。"
   end
 
   private

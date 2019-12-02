@@ -3,21 +3,35 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
-  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
-
-  validates :email, presence: true, uniqueness: true
+  validates :email,
+            presence: { message: "を入力してください。" },
+            uniqueness:  { message: "は既に登録されています。" },
+            format: {
+              allow_blank: true,
+              with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
+              message: "の形式が正しくありません。"
+            }
 
   validates :name,
-            presence: true,
-            uniqueness: true,
+            presence:  { message: "を入力してください。" },
             length: { maximum: 15 },
             format: {
               allow_blank: true,
               with: /\A\w+\z/,
               message: "は英文字と_（アンダーバー）のみが使用できます"
             }
+
+  validates :password,
+            length: { minimum: 4, too_short: "は4文字以上で入力してください。", },
+            if: -> { new_record? || changes[:crypted_password] }
+
+  validates :password,
+            confirmation: { message: "が一致しません。" },
+            if: -> { new_record? || changes[:crypted_password] }
+
+  validates :password_confirmation,
+            presence: { message: "を入力してください。" },
+            if: -> { new_record? || changes[:crypted_password] }
 
   validates :description, length: { maximum: 200, too_long: "は最大200文字まで入力できます。" }
 

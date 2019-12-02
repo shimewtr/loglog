@@ -32,48 +32,19 @@ class Feed < ApplicationRecord
   end
 
   def self.user_followed(target, sender)
-    puts "followed"
-    puts target.id
-    puts sender.id
-    # feed = Feed.new(
-    #   user_id: target.id,
-    #   sender_id: sender.id,
-    #   log_id: 0,
-    #   action: :user_followed
-    # )
-    # puts feed.errors.messages
     Feed.create!(
       user_id: target.id,
       sender_id: sender.id,
       action: :user_followed
     )
-  rescue ActiveRecord::RecordInvalid => e
-    puts e.record.errors
   end
 
   def self.following_user_follow(target, sender, follower)
-    puts "following_user_follow"
-    puts target.id
-    puts sender.id
-    puts follower.id
-    # feed = Feed.new(
-    #   user_id: target.id,
-    #   sender_id: sender.id,
-    #   log_id: 0,
-    #   followed_id: follower.id,
-    #   action: :following_follow
-    # )
     Feed.create!(
       user_id: target.id,
       sender_id: sender.id,
       followed_id: follower.id,
       action: :following_follow
     )
-  rescue ActiveRecord::RecordInvalid => e
-    puts "following_user_follow"
-    puts "following_user_follow"
-    puts "following_user_follow"
-
-    pp e.record.errors
   end
 end

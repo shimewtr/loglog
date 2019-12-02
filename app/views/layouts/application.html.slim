@@ -18,7 +18,7 @@ html
       - if flash.alert.present?
         .alert.alert-warning
           - flash.alert.each do |alert|
-            = alert
+            p = alert
       = yield
     = render "footer"
     - if Rails.env.development?

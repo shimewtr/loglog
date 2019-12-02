@@ -1,14 +1,19 @@
+- if log.errors.any?
+  .alert.alert-warning
+    - log.errors.full_messages.each do |msg|
+      p.alert__message = msg
+
 .log-form
   = form_with model: log, local: true do |f|
     .form-group
       = f.label :title, class: "form__label"
-      p.form__sub-label ログのタイトルを入力してください。
-      = f.text_field :title, placeholder: "ログのタイトル", class: "form__text-field"
+      p.form__sub-label ログのタイトルを入力してください。(最大40文字)
+      = f.text_field :title, placeholder: "ログのタイトル", class: "form__text-field", maxlength: "40"
 
     .form-group
       = f.label :description, class: "form__label"
-      p.form__sub-label どんなログなのか説明文を入力してください。
-      = f.text_area :description, placeholder: "ログの説明文", class: "form__text-area"
+      p.form__sub-label どんなログなのか説明文を入力してください。(最大200文字)
+      = f.text_area :description, placeholder: "ログの説明文", class: "form__text-area", maxlength: "200"
 
     .form-group
       = f.label :graph, class: "form__label"
@@ -36,4 +41,4 @@
               = icon "fas", "square", class: "form-label-#{color}-icon"
               span.form-label-text = color.to_s.capitalize
     .form-group
-      = f.submit "作成", class: "form__button"
+      = f.submit log_submit_label(from), class: "form__button"

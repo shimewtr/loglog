@@ -23,3 +23,59 @@ log_3:
   description: ログの説明文3
   color: "orange"
   graph: "column"
+
+log_red:
+  id: 100
+  user_id: 1
+  title: ログred
+  description: ログの説明文
+  color: "red"
+  graph: "line"
+
+log_blue:
+  id: 101
+  user_id: 1
+  title: ログblue
+  description: ログの説明文
+  color: "blue"
+  graph: "line"
+
+log_green:
+  id: 102
+  user_id: 1
+  title: ログgreen
+  description: ログの説明文
+  color: "green"
+  graph: "line"
+
+log_orange:
+  id: 103
+  user_id: 1
+  title: ログorange
+  description: ログの説明文
+  color: "orange"
+  graph: "line"
+
+log_purple:
+  id: 104
+  user_id: 1
+  title: ログpurple
+  description: ログの説明文
+  color: "purple"
+  graph: "line"
+
+log_pink:
+  id: 105
+  user_id: 1
+  title: ログpink
+  description: ログの説明文
+  color: "pink"
+  graph: "line"
+
+log_brown:
+  id: 106
+  user_id: 1
+  title: ログbrown
+  description: ログの説明文
+  color: "brown"
+  graph: "line"
