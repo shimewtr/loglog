@@ -86,4 +86,20 @@ class Feed < ApplicationRecord
       )
     end
   end
+
+  def self.destroy_user_followed(target, sender)
+    Feed.where(
+      user_id: target.id,
+      sender_id: sender.id,
+      action: :user_followed
+    ).destroy_all
+  end
+
+  def self.destroy_following_user_follow(sender, follower)
+    Feed.where(
+      sender_id: sender.id,
+      followed_id: follower.id,
+      action: :following_follow
+    ).destroy_all
+  end
 end
