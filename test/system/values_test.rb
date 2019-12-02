@@ -24,7 +24,9 @@ class ValuesTest < ApplicationSystemTestCase
 
   test "valueを削除できるか" do
     visit log_path(logs(:log_1))
-    click_link "数値を削除", match: :first
+    accept_confirm do
+      first(".log-values-table__button").click
+    end
     assert_text "値を削除しました。"
     assert_no_text "1.1"
   end

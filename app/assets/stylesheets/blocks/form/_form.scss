@@ -113,6 +113,31 @@ form {
     }
   }
 
+  &__date-field {
+    box-sizing: border-box;
+    margin-bottom: 0.375rem;
+    padding: $padding-form;
+    width: 100%;
+    height: $height-form-text-field;
+    outline: none;
+    border: $border-form solid $border;
+    border-radius: $border-radius-form;
+    font-size: $font-form-text-field;
+
+    appearance: none;
+
+    &:focus {
+      border: $border-form solid $main;
+
+      @include form-forcus-box-shadow($main);
+    }
+
+    & input {
+      padding: $padding-form;
+      color: $font-main;
+    }
+  }
+
   &__button {
     width: $width-button;
     height: $height-button;
