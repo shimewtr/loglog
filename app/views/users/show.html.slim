@@ -13,7 +13,8 @@
             = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete, class: "user-profile-links__link--unfollow"
           - else
             = link_to "フォロー", user_follow_relationships_path(@user), method: :post, class: "user-profile-links__link--follow"
-      p.user-profile-text__description = safe_join(@user.description.split("\n"), tag(:br))
+      - if @user.description
+        p.user-profile-text__description = safe_join(@user.description.split("\n"), tag(:br))
 
   = render "logs/list", logs: @user.logs, user_data: false
 
