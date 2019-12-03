@@ -138,6 +138,30 @@ form {
     }
   }
 
+  &__search-field {
+    box-sizing: border-box;
+    padding: $padding-form;
+    width: 80%;
+    height: 1.5rem;
+    outline: none;
+    border: $border-form solid $border;
+    border-radius: $border-radius-form;
+    font-size: $font-form-text-field;
+
+    appearance: none;
+
+    &:focus {
+      border: $border-form solid $main;
+
+      @include form-forcus-box-shadow($main);
+    }
+
+    & input {
+      padding: $padding-form;
+      color: $font-main;
+    }
+  }
+
   &__button {
     width: $width-button;
     height: $height-button;
@@ -145,6 +169,18 @@ form {
     background-color: $main;
     color: white;
     font-size: $font-button;
+    cursor: pointer;
+
+    @include button-shadow(2px);
+  }
+
+  &__search-button {
+    width: 20%;
+    height: 1.5rem;
+    border-radius: $border-radius-button;
+    background-color: $main;
+    color: white;
+    font-size: 0.875rem;
     cursor: pointer;
 
     @include button-shadow(2px);
