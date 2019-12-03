@@ -1,4 +1,6 @@
-= render "search_form"
-
-p.logs-list__title ログ一覧
+.log-list__header
+  p.logs-list__title ログ一覧
+  = render "search_form"
 = render "logs/list", logs: @logs, user_data: true
+
+= paginate @logs

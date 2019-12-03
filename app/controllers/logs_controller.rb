@@ -6,7 +6,7 @@ class LogsController < ApplicationController
 
   def index
     @q = Log.ransack(params[:q])
-    @logs = @q.result(distinct: true)
+    @logs = @q.result(distinct: true).page(params[:page])
   end
 
   def show
