@@ -27,7 +27,7 @@
   p.log-description = safe_join(@log.description.split("\n"), tag(:br))
 
   .log-chart
-    = render "chart", log: @log, width: "580px", height: "380px", display_axis: true
+    = render "chart", log: @log, width: "580px", height: "380px", display_ticks: true
 
   .log-values
     p.log-values__title ログデータ一覧

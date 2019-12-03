@@ -1,5 +1,6 @@
-= render "feeds/new_feeds"
+.log-list__header
+  p.logs-list__title ログ一覧
+  = render "search_form"
 = render "logs/list", logs: @logs, user_data: true
 
-p フォローしているログ
-= render "logs/list", logs: current_user.follow_logs, user_data: true
+= paginate @logs

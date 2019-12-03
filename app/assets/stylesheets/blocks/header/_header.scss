@@ -74,6 +74,10 @@
   @extend .header-logout__link;
 }
 
+.header-login__link {
+  @extend .header-logout__link;
+}
+
 .header-link {
   &__icon {
     color: $font-header;

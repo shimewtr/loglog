@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class LogsController < ApplicationController
+  skip_before_action :require_login, only: [:index], raise: false
   before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   def index
-    @logs = Log.all
+    @q = Log.ransack(params[:q])
+    @logs = @q.result(distinct: true).page(params[:page])
   end
 
   def show

@@ -18,3 +18,6 @@ header.header
         = link_to new_user_path, class: "header-logout__link" do
           .header-link__icon = icon "fas", "user-plus"
           p.header-link__text ユーザー登録
+        = link_to welcome_path, class: "header-login__link" do
+          .header-link__icon = icon "fas", "sign-in-alt"
+          p.header-link__text ログイン

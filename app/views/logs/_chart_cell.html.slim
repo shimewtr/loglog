@@ -1,6 +1,6 @@
 .log-cell
   - if log.values.exists?
-    = render "logs/chart", log: log, height: "170px", width: "260px", display_axis: false
+    = render "logs/chart", log: log, height: "170px", width: "262px", display_ticks: false
   - else
     p.log-cell__none-text データがありません。
   .log-cell-data

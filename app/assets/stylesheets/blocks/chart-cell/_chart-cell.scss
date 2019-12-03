@@ -1,9 +1,10 @@
 .log-cell {
   box-sizing: border-box;
-  padding-top: 0.5rem;
-  width: 260px;
+  padding: 0.5rem 0.5rem 0;
+  width: 278px;
   border: 1px solid $border;
   border-radius: 0.5rem;
+  background-color: $background-content;
   pointer-events: none;
 
   @include cell-shadow(0.2);
