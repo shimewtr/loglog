@@ -4,16 +4,16 @@
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  padding: 1rem 1rem 5rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
   width: 100%;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   background-color: $background-content;
 }
 
 .user-profile {
   display: flex;
   flex-direction: row;
-  margin-bottom: 3rem;
   width: 100%;
 }
 
@@ -141,5 +141,15 @@
     color: $font-sub;
     text-align: center;
     font-size: 0.75rem;
+  }
+}
+
+.user-logs-list {
+  &__title {
+    margin-bottom: 1rem;
+    width: 100%;
+    color: $font-main;
+    font-weight: bold;
+    font-size: 1rem;
   }
 }

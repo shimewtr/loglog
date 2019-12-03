@@ -1,3 +1,5 @@
+- @page_title = @log.title
+
 .log
   .log-header
     p.log-header__title = @log.title
@@ -38,13 +40,13 @@
           tr.log-values-table__thead-tr
             th.log-values-table__thead-th--date 日にち
             th.log-values-table__thead-th--value 数値
-            - if @log.user == current_user
+            - if current_user == @log.user
               th.log-values-table__th--button
         - @log.values.default_order.each do |value|
           tr.log-values-table__tr
             td.log-values-table__th--date = value.valued_on.strftime("%Y/%m/%d")
             td.log-values-table__th--value = value.value
-            - if @log.user == current_user
+            - if current_user == @log.user
               td.log-values-table__th--button = link_to "削除",\
               value_path(id: value.id, log_id: @log.id),\
               method: :delete,\
