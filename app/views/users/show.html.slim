@@ -17,14 +17,16 @@
       - if @user.description
         p.user-profile-text__description = safe_join(@user.description.split("\n"), tag(:br))
 
+- if @user.logs
+  p.user-logs-list__title ログ一覧
   = render "logs/list", logs: @user.logs, user_data: false
 
-  .relation-tab
-    input#follow-tab type="radio" name="relation-tab__item" checked=true
-    label.relation-tab__item.relation-tab__item-follow for="follow-tab" フォロー
-    input#follower-tab type="radio" name="relation-tab__item"
-    label.relation-tab__item.relation-tab__item-follower for="follower-tab" フォロワー
-    #follow-tab__content.relation-tab__content
-      = render "relations", users: @user.followings, none_text: "フォローしているユーザーがいません"
-    #follower-tab__content.relation-tab__content
-      = render "relations", users: @user.followers, none_text: "フォロワーがいません"
+.relation-tab
+  input#follow-tab type="radio" name="relation-tab__item" checked=true
+  label.relation-tab__item.relation-tab__item-follow for="follow-tab" フォロー
+  input#follower-tab type="radio" name="relation-tab__item"
+  label.relation-tab__item.relation-tab__item-follower for="follower-tab" フォロワー
+  #follow-tab__content.relation-tab__content
+    = render "relations", users: @user.followings, none_text: "フォローしているユーザーがいません"
+  #follower-tab__content.relation-tab__content
+    = render "relations", users: @user.followers, none_text: "フォロワーがいません"
