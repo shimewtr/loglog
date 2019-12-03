@@ -146,6 +146,13 @@
     width: 100%;
     color: $font-main;
   }
+
+  &__none-text {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    color: $font-sub;
+    font-size: 0.875rem;
+  }
 }
 
 .log-values-table {

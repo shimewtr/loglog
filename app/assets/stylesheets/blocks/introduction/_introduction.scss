@@ -1,0 +1,60 @@
+.introduction {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: $background-content;
+
+  &__title {
+    margin-bottom: 1rem;
+    color: $font-main;
+    font-size: 1.125rem;
+  }
+
+  &__text {
+    margin-bottom: 1rem;
+    color: $font-sub;
+    font-size: 0.875rem;
+    line-height: 1.625rem;
+  }
+}
+
+.introduction-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.introduction-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $width-button;
+  height: 2.875rem;
+  border-radius: $border-radius-button;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &--new {
+    border: 2px solid $main;
+    background-color: $main;
+    color: white;
+
+    @extend .introduction-button;
+  }
+
+  &--welcome {
+    border: 2px solid $main;
+    color: $main;
+
+    @extend .introduction-button;
+  }
+}

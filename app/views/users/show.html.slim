@@ -5,14 +5,15 @@
     .user-profile-text
       p.user-profile-text__name = @user.name
       .user-profile-links
-        - if @user == current_user
-          = link_to "編集", edit_user_path, class: "user-profile-links__link--edit"
-          = link_to "削除", user_path, method: :delete, class: "user-profile-links__link--delete", data: { confirm: "削除してよろしいですか？" }
-        - else
-          - if @user.followed_by?(current_user)
-            = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete, class: "user-profile-links__link--unfollow"
+        - if current_user
+          - if @user == current_user
+            = link_to "編集", edit_user_path, class: "user-profile-links__link--edit"
+            = link_to "削除", user_path, method: :delete, class: "user-profile-links__link--delete", data: { confirm: "削除してよろしいですか？" }
           - else
-            = link_to "フォロー", user_follow_relationships_path(@user), method: :post, class: "user-profile-links__link--follow"
+            - if @user.followed_by?(current_user)
+              = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete, class: "user-profile-links__link--unfollow"
+            - else
+              = link_to "フォロー", user_follow_relationships_path(@user), method: :post, class: "user-profile-links__link--follow"
       - if @user.description
         p.user-profile-text__description = safe_join(@user.description.split("\n"), tag(:br))
 
