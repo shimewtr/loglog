@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LogsController < ApplicationController
-  skip_before_action :require_login, only: [:index], raise: false
+  skip_before_action :require_login, only: [:index, :show], raise: false
   before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   def index
