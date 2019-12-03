@@ -1,22 +1,50 @@
 .logs-list {
   display: flex;
+  align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  box-sizing: border-box;
+  margin-bottom: 3rem;
   width: 100%;
+  border-radius: 0.25rem;
 
   &__title {
-    margin-bottom: 0.875rem;
-    width: 100%;
+    width: 80%;
     color: $font-main;
+    font-weight: bold;
     font-size: 1rem;
+  }
+
+  &__all-button {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: 0.5rem;
+    padding: 0 0.875rem;
+    height: 1.5rem;
+    border: 1px solid $font-sub;
+    border-radius: 4px;
+    color: $font-sub;
+    text-decoration: none;
+    font-size: $font-log-link;
   }
 
   &>.log-cell__link {
     margin-right: 44px;
-    margin-bottom: 22px;
+    margin-bottom: 30px;
   }
 
   &>.log-cell__link:nth-child(2n) {
     margin-right: 0;
   }
+}
+
+.log-list__header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 1.5rem;
 }

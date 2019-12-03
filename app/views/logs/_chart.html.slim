@@ -1,4 +1,4 @@
 - if log.graph == "column"
-  = render "logs/column_chart", log: log, height: height, width: width, display_axis: display_axis
+  = render "logs/column_chart", log: log, height: height, width: width, display_ticks: display_ticks
 - elsif log.graph == "line"
-  = render "logs/line_chart", log: log, height: height, width: width, display_axis: display_axis
+  = render "logs/line_chart", log: log, height: height, width: width, display_ticks: display_ticks

@@ -1,5 +1,4 @@
-= render "feeds/new_feeds"
-= render "logs/list", logs: @logs, user_data: true
+= render "search_form"
 
-p フォローしているログ
-= render "logs/list", logs: current_user.follow_logs, user_data: true
+p.logs-list__title ログ一覧
+= render "logs/list", logs: @logs, user_data: true

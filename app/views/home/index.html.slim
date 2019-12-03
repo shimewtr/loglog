@@ -1,0 +1,14 @@
+- if current_user
+  = render "feeds/new_feeds"
+- else
+  = render "introduction"
+
+- if current_user
+  .log-list__header
+    p.logs-list__title フォローしているログ
+  = render "logs/list", logs: current_user.follow_logs.limit(10), user_data: true
+
+.log-list__header
+  p.logs-list__title ログ一覧
+  = link_to "すべて見る", logs_path, class: "logs-list__all-button"
+= render "logs/list", logs: @logs, user_data: true
