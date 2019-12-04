@@ -102,14 +102,16 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
+  config.action_mailer.default_url_options = { host: "loglog.me" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-      address: "smtp.gmail.com",
-      port: "587",
-      domain: "heroku.com",
-      authentication: "plain",
-      user_name: ENV["MAILER_USER_NAME"],
-      password: ENV["MAILER_PASSWORD"],
+    address: "smtp.sendgrid.net",
+    port: "587",
+    domain: "heroku.com",
+    authentication: "plain",
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"],
+    enable_starttls_auto: true
   }
 end
