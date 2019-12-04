@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_admin_login, only: [:index]
   skip_before_action :require_login, only: [:new, :create, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
