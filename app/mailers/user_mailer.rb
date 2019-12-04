@@ -3,16 +3,11 @@
 class UserMailer < ApplicationMailer
   def activation_needed_email(user)
     @user = user
-    @url  = "http://0.0.0.0:3000/users/#{user.activation_token}/activate"
-
-    mail to: user.email, subject: "Welcome to My Awesome Site"
+    mail to: user.email, subject: "【LogLog】仮登録完了のお知らせ / 本登録のお願い"
   end
 
   def activation_success_email(user)
     @user = user
-    # @url = "#{root_url}/login"
-    @url = "http://0.0.0.0:3000/login"
-
-    mail to: user.email, subject: "Your acount is now activate"
+    mail to: user.email, subject: "【LogLog】本登録完了のお知らせ"
     end
 end
