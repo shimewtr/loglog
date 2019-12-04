@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   end
 
   resources :values, only: [:create, :destroy]
+
+  get "/about", to: "home#about"
+  get "/privacy", to: "home#privacy"
+  get "/discramer", to: "home#discramer"
 end

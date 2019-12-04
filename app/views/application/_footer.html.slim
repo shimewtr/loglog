@@ -1,5 +1,12 @@
 footer.footer
   .footer__content
+    ul.footer-link
+      li.footer-link__item
+        = link_to "LogLogとは", about_path, class: "footer-link__text"
+      li.footer-link__item
+        = link_to "プライバシーポリシー", privacy_path, class: "footer-link__text"
+      li.footer-link__item
+        = link_to "免責事項", discramer_path, class: "footer-link__text"
     = link_to "https://github.com/wawawatataru/loglog", class: "footer-github-link" do
       p.footer-copy &copy;wawawatataru
       .footer-icon = icon "fab", "github"
