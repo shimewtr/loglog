@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :require_admin_login, only: [:index]
-  skip_before_action :require_login, only: [:new, :create, :show]
+  skip_before_action :require_login, only: [:new, :create, :show, :activate]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to welcome_path, notice: "ユーザーを作成しました。"
+      redirect_to welcome_path, notice: "認証メールを送信しました。受け取ったメールから認証を完了してください。"
     else
       render :new
     end
@@ -39,6 +39,16 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to root_path, notice: "ユーザーを削除しました。"
+  end
+
+  def activate
+    @user = User.load_from_activation_token(params[:id])
+    if @user
+      @user.activate!
+      redirect_to welcome_path, notice: "ユーザー認証に成功しました。"
+    else
+      not_authenticated
+    end
   end
 
   private

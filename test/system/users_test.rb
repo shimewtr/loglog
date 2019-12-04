@@ -14,7 +14,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "user_password", with: "aaaa"
     fill_in "user_password_confirmation", with: "aaaa"
     click_button "作成"
-    assert_text "ユーザーを作成しました。"
+    assert_text "認証メールを送信しました。受け取ったメールから認証を完了してください。"
   end
 
   test "Userページが正しく表示されるか" do
