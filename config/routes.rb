@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   get "follow_relationships/destroy"
 
   resources :users do
-    resource :follow_relationships, only: [:create, :destroy]
     get :follows, on: :member
     get :followers, on: :member
+    get :activate, on: :member
+    resource :follow_relationships, only: [:create, :destroy]
   end
 
   resources :logs do
