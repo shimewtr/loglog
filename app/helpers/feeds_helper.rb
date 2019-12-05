@@ -15,15 +15,13 @@ module FeedsHelper
 
     case feed.action
     when "log_create"
-      "#{sender.name} さんが「#{log.title}」を作成しました。"
+      "#{sender.name}さんが「#{log.title}」を作成しました。"
     when "value_create"
-      "#{sender.name} さんが「#{log.title}」を更新しました。"
-    when "followed"
-      "#{sender.name} さんにフォローされました。"
+      "#{sender.name}さんが「#{log.title}」を更新しました。"
     when "user_followed"
-      "#{sender.name} さんにフォローされました。"
+      "#{sender.name}さんにフォローされました。"
     when "following_follow"
-      "#{sender.name} さんが#{follower.name}さんをフォローしました。"
+      "#{sender.name}さんが#{follower.name}さんをフォローしました。"
     end
   end
 
