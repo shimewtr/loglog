@@ -1,0 +1,23 @@
+.admin-menu {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $background-footer;
+}
+
+.admin-menu-content {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: $width-main-content;
+  height: 1rem;
+}
+
+.admin-menu-items {
+  &__item {
+    color: $font-main;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+}

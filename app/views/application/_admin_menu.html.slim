@@ -1,0 +1,5 @@
+- if current_user && current_user.admin
+  .admin-menu
+    .admin-menu-content
+      ul.admin-menu-items
+        = link_to "ユーザー一覧", users_path, class: "admin-menu-items__item"
