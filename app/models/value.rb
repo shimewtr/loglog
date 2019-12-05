@@ -14,7 +14,7 @@ class Value < ApplicationRecord
             presence: { message: "を入力してください。" },
             uniqueness: { scope: :log, message: "が重複する値は作成できません。" }
 
-  scope :default_order, -> { order(valued_on: :desc) }
+  scope :default_order, -> { order(valued_on: :asc) }
 
   after_create ValueCallbacks.new
 end

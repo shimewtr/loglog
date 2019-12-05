@@ -1,4 +1,4 @@
-= column_chart log.values.pluck(:valued_on, :value), \
+= column_chart log.values.default_order.pluck(:valued_on, :value), \
   colors: [chart_color(log)],\
   height: height,\
   width: width,\
