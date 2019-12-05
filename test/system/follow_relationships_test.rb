@@ -11,6 +11,20 @@ class FllowRelationshipsTest < ApplicationSystemTestCase
     @user_4 = users(:user_4)
   end
 
+  test "別のユーザーにしかフォローリンクが表示されないか" do
+    visit user_path(@user_1)
+    assert_no_selector(".user-profile-links__link--follow")
+    assert_no_selector(".user-profile-links__link--unfollow")
+
+    visit user_path(@user_4)
+    assert_selector(".user-profile-links__link--follow")
+
+    logout
+    visit user_path(@user_4)
+    assert_no_selector(".user-profile-links__link--follow")
+    assert_no_selector(".user-profile-links__link--unfollow")
+  end
+
   test "ユーザーをフォローできるか" do
     visit user_path(@user_4)
     assert_not @user_4.followed_by?(@user_1)

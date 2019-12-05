@@ -9,7 +9,7 @@
           = link_to "編集", edit_log_path(@log), class: "log-header__link--edit"
           = link_to "削除", log_path(@log), method: :delete, class: "log-header__link--delete", data: { confirm: "削除してよろしいですか？" }
         - else
-          - if @log.following_by?(current_user)
+          - if @log.followed_by?(current_user)
             = link_to "フォロー解除", log_log_following_path(log_id: @log.id), method: :delete, class: "log-header__link--unfollow"
           - else
             = link_to "フォロー", log_log_followings_path(log_id: @log.id), method: :post, class: "log-header__link--follow"

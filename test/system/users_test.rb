@@ -23,15 +23,24 @@ class UsersTest < ApplicationSystemTestCase
     assert_text "Robert"
   end
 
-  test "ログインユーザー以外は編集と削除が表示されないか" do
-    login_user("loglog.user.1@gmail.com", "aaaa")
+  test "ログインしていなくてもUserページが正しく表示されるか" do
     visit user_path(@user)
-    assert_text "編集"
-    assert_text "削除"
+    assert_text "Robert"
+  end
+
+  test "ログインユーザー以外は編集と削除が表示されないか" do
+    visit user_path(@user)
+    assert_no_text "編集"
+    assert_no_text "削除"
 
     visit user_path(users(:user_2))
     assert_no_text "編集"
     assert_no_text "削除"
+
+    login_user("loglog.user.1@gmail.com", "aaaa")
+    visit user_path(@user)
+    assert_text "編集"
+    assert_text "削除"
   end
 
   test "Userの情報を更新できるか" do
@@ -55,5 +64,23 @@ class UsersTest < ApplicationSystemTestCase
       click_link "削除"
     end
     assert_text "ユーザーを削除しました。"
+  end
+
+  test "admin以外はユーザー一覧をみれないか" do
+    visit users_path
+    assert_equal welcome_path, current_path
+
+    login_user("loglog.user.1@gmail.com", "aaaa")
+    visit users_path
+    assert_equal root_path, current_path
+    assert_text "管理者としてログインしてください"
+
+    login_user("admin@gmail.com", "aaaa")
+    visit users_path
+    assert_equal users_path, current_path
+    assert_no_text "管理者としてログインしてください"
+    assert_text "admin"
+    assert_text "Robert"
+    assert_text "Jonathan"
   end
 end

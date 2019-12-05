@@ -12,7 +12,7 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_text "Bruno さんが「作成するログのタイトル」を作成しました。"
+    assert_text "Brunoさんが「作成するログのタイトル」を作成しました。"
   end
 
   test "フォローしているユーザーがログを更新したときフィードが追加されるか" do
@@ -24,7 +24,7 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_text "Bruno さんが「ログのタイトル3」を更新しました。"
+    assert_text "Brunoさんが「ログのタイトル3」を更新しました。"
   end
 
   test "フォローしてないユーザーがログを作成したときフィードが追加されないか" do
@@ -36,7 +36,7 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.2@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "loglog.user.3@gmail.com さんが「作成するログのタイトル」を作成しました。"
+    assert_no_text "Brunoさんが「作成するログのタイトル」を作成しました。"
   end
 
   test "フォローしてないユーザーがログを更新したときフィードが追加されないか" do
@@ -48,7 +48,27 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.2@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_no_text "Brunoさんが「ログのタイトル3」を更新しました。"
+  end
+
+  test "フォローされたときフィードが追加されるか" do
+    login_user("loglog.user.4@gmail.com", "aaaa")
+    visit user_path(users(:user_1))
+    click_link "フォロー"
+
+    login_user("loglog.user.1@gmail.com", "aaaa")
+    visit root_path
+    assert_text "Calvadosさんにフォローされました。"
+  end
+
+  test "フォローしているユーザーが他のユーザーをフォローしたときフィードが追加されるか" do
+    login_user("loglog.user.2@gmail.com", "aaaa")
+    visit user_path(users(:user_3))
+    click_link "フォロー"
+
+    login_user("loglog.user.1@gmail.com", "aaaa")
+    visit root_path
+    assert_text "JonathanさんがBrunoさんをフォローしました。"
   end
 
   test "ログが削除されたとき関連するフィードが削除されるか" do
@@ -63,7 +83,7 @@ class FeedsTest < ApplicationSystemTestCase
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_no_text "Brunoさんが「ログのタイトル3」を更新しました。"
   end
 
   test "ユーザーが削除されたとき関連するフィードが削除されるか" do
@@ -73,12 +93,16 @@ class FeedsTest < ApplicationSystemTestCase
     fill_in "valued_on", with: Date.current
     click_button "追加"
 
+    visit user_path(users(:user_1))
+    click_link "フォロー"
+
     visit user_path(users(:user_3))
     accept_confirm do
       click_link "削除"
     end
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
-    assert_no_text "loglog.user.3@gmail.com さんが「ログのタイトル3」を更新しました。"
+    assert_no_text "Brunoさんが「ログのタイトル3」を更新しました。"
+    assert_no_text "Brunoさんにフォローされました。"
   end
 end

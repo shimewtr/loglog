@@ -13,6 +13,13 @@ class LogsTest < ApplicationSystemTestCase
     assert_text "ログのタイトル2"
   end
 
+  test "ログインしていなくてもLogの一覧が表示されるか" do
+    logout
+    visit root_path
+    assert_text "ログのタイトル1"
+    assert_text "ログのタイトル2"
+  end
+
   test "Logを作成できるか" do
     visit root_path
     click_on "作成"
@@ -26,6 +33,13 @@ class LogsTest < ApplicationSystemTestCase
   end
 
   test "Logの詳細ページが表示できるか" do
+    visit log_path(id: 1)
+    assert_text "ログのタイトル1"
+    assert_text "ログの説明文1"
+  end
+
+  test "ログインしていなくてもLogの詳細ページが表示できるか" do
+    logout
     visit log_path(id: 1)
     assert_text "ログのタイトル1"
     assert_text "ログの説明文1"
@@ -57,6 +71,10 @@ class LogsTest < ApplicationSystemTestCase
     assert_text "編集"
 
     visit log_path(id: 2)
+    assert_no_text "編集"
+
+    logout
+    visit log_path(id: 1)
     assert_no_text "編集"
   end
 end

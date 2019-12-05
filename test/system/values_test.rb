@@ -38,5 +38,9 @@ class ValuesTest < ApplicationSystemTestCase
 
     visit log_path(logs(:log_2))
     assert_no_selector("form")
+
+    logout
+    visit log_path(logs(:log_2))
+    assert_no_selector("form")
   end
 end

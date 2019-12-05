@@ -33,7 +33,7 @@ class Log < ApplicationRecord
 
   after_create LogCallbacks.new
 
-  def following_by?(user)
+  def followed_by?(user)
     log_followings.where(user_id: user.id).exists?
   end
 end

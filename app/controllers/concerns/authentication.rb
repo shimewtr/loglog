@@ -13,7 +13,7 @@ module Authentication
 
   def require_admin_login
     unless admin_login?
-      redirect_to root_path, alert: "管理者としてログインしてください"
+      redirect_to root_path, alert: ["管理者としてログインしてください"]
     end
   end
 end

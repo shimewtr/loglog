@@ -1,3 +1,11 @@
+admin:
+  id: 10000
+  email: admin@gmail.com
+  name: admin
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("aaaa", salt) %>
+  admin: true
+
 user_1:
   id: 1
   email: loglog.user.1@gmail.com
