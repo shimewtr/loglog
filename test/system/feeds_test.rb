@@ -51,6 +51,26 @@ class FeedsTest < ApplicationSystemTestCase
     assert_no_text "Brunoさんが「ログのタイトル3」を更新しました。"
   end
 
+  test "フォローされたときフィードが追加されるか" do
+    login_user("loglog.user.4@gmail.com", "aaaa")
+    visit user_path(users(:user_1))
+    click_link "フォロー"
+
+    login_user("loglog.user.1@gmail.com", "aaaa")
+    visit root_path
+    assert_text "Calvadosさんにフォローされました。"
+  end
+
+  test "フォローしているユーザーが他のユーザーをフォローしたときフィードが追加されるか" do
+    login_user("loglog.user.2@gmail.com", "aaaa")
+    visit user_path(users(:user_3))
+    click_link "フォロー"
+
+    login_user("loglog.user.1@gmail.com", "aaaa")
+    visit root_path
+    assert_text "JonathanさんがBrunoさんをフォローしました。"
+  end
+
   test "ログが削除されたとき関連するフィードが削除されるか" do
     login_user("loglog.user.3@gmail.com", "aaaa")
     visit log_path(logs(:log_3))
@@ -73,6 +93,9 @@ class FeedsTest < ApplicationSystemTestCase
     fill_in "valued_on", with: Date.current
     click_button "追加"
 
+    visit user_path(users(:user_1))
+    click_link "フォロー"
+
     visit user_path(users(:user_3))
     accept_confirm do
       click_link "削除"
@@ -80,5 +103,6 @@ class FeedsTest < ApplicationSystemTestCase
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
     assert_no_text "Brunoさんが「ログのタイトル3」を更新しました。"
+    assert_no_text "Brunoさんにフォローされました。"
   end
 end

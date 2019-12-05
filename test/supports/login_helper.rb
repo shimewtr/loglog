@@ -7,4 +7,8 @@ module LoginHelper
     fill_in("password", with: password)
     click_button "ログイン"
   end
+
+  def logout
+    click_link "ログアウト"
+  end
 end
