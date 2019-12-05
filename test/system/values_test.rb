@@ -24,11 +24,12 @@ class ValuesTest < ApplicationSystemTestCase
 
   test "valueを削除できるか" do
     visit log_path(logs(:log_1))
+    assert_text "1.2"
     accept_confirm do
       first(".log-values-table__button").click
     end
     assert_text "値を削除しました。"
-    assert_no_text "1.1"
+    assert_no_text "1.2"
   end
 
   test "自分が作成していないlogにvalueの入力欄が表示されないか" do
