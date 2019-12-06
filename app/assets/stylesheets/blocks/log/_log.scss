@@ -19,7 +19,7 @@
   width: 100%;
 
   &__title {
-    width: 50%;
+    flex: 8;
     color: $font-main;
     font-size: $font-log-title;
   }
@@ -27,9 +27,9 @@
   &__links {
     display: flex;
     align-items: center;
+    flex: 3;
     flex-direction: row;
     justify-content: flex-end;
-    width: 50%;
     height: $font-log-title;
   }
 
