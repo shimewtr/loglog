@@ -38,6 +38,21 @@ jobs:
             bundle exec rake db:create
             bundle exec rake db:schema:load
             ./bin/test
+      - run:
+          name: notify to obniz success
+          command: |
+            curl -X POST \
+            $OBNIZ_WEBHOOK_URL \
+            -H 'content-type: application/json' \
+            -d '{ "result": true }'
+      - run:
+          name: notify to obniz failuer
+          command: |
+            curl -X POST \
+            $OBNIZ_WEBHOOK_URL \
+            -H 'content-type: application/json' \
+            -d '{ "result": false }'
+          when: on_fail
 
 workflows:
   version: 2
