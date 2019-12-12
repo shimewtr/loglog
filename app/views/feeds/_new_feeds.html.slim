@@ -2,7 +2,7 @@
   p.feeds__title 新着情報
   .feeds__items
     - if current_user.passive_feeds.exists?
-      - current_user.passive_feeds.default_order.each do |feed|
+      - current_user.passive_feeds.default_order.includes(:log).includes(:sender).includes(:followed).each do |feed|
         = render "feeds/feed", feed: feed
     - else
       p.feeds__none-text ユーザーをフォローするとフォローしたユーザーの最新情報が表示されます。

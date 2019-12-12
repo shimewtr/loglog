@@ -5,7 +5,7 @@ class LogsController < ApplicationController
   before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = Log.ransack(params[:q])
+    @q = Log.includes(:user).ransack(params[:q])
     @logs = @q.result(distinct: true).page(params[:page])
   end
 
