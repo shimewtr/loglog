@@ -32,19 +32,33 @@
   border-top: 1px solid $border;
 
   &__title {
-    margin-bottom: 0.25rem;
-    height: 2.5rem;
     color: $font-main;
     font-size: 1rem;
     line-height: 1.25rem;
   }
 }
 
+.logcell-data-text-area {
+  overflow: auto;
+  margin-bottom: 0.25rem;
+  height: 2.5rem;
+}
+
+
+.log-cell-data-log-area {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  width: 100%;
+}
+
 .log-cell-data-profile {
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 0.25rem;
+  width: 50%;
 
   &__icon {
     height: 1rem;
@@ -52,6 +66,25 @@
   }
 
   &__name {
+    color: $font-sub;
+    font-size: 0.75rem;
+  }
+}
+
+.log-cell-data-update {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
+
+  &__icon {
+    margin-right: 0.25rem;
+    color: $font-sub;
+    font-size: 0.75rem;
+  }
+
+  &__text {
     color: $font-sub;
     font-size: 0.75rem;
   }

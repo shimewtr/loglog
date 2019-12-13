@@ -4,8 +4,13 @@
   - else
     p.log-cell__none-text データがありません。
   .log-cell-data
-    p.log-cell-data__title = log.title
-    - if user_data
+    .logcell-data-text-area
+      p.log-cell-data__title = log.title
+    .log-cell-data-log-area
       .log-cell-data-profile
-        = image_tag log.user.gravatar_url, alt: "タイトルロゴ", class: "log-cell-data-profile__icon"
-        p.log-cell-data-profile__name = log.user.name
+        - if user_data
+          = image_tag log.user.gravatar_url, alt: "タイトルロゴ", class: "log-cell-data-profile__icon"
+          p.log-cell-data-profile__name = log.user.name
+      .log-cell-data-update
+        .log-cell-data-update__icon = icon "fas", "clock"
+        p.log-cell-data-update__text = log.updated_at.strftime("%Y/%m/%d")

@@ -25,9 +25,9 @@
 
 .relation-tab
   input#follow-tab type="radio" name="relation-tab__item" checked=true
-  label.relation-tab__item.relation-tab__item-follow for="follow-tab" = "フォロー(#{@user.followings.count})"
+  label.relation-tab__item.relation-tab__item-follow for="follow-tab" = "フォロー(#{@user.followings.size})"
   input#follower-tab type="radio" name="relation-tab__item"
-  label.relation-tab__item.relation-tab__item-follower for="follower-tab" = "フォロワー(#{@user.followers.count})"
+  label.relation-tab__item.relation-tab__item-follower for="follower-tab" = "フォロワー(#{@user.followers.size})"
   #follow-tab__content.relation-tab__content
     = render "relations", users: @user.followings, none_text: "フォローしているユーザーがいません"
   #follower-tab__content.relation-tab__content
