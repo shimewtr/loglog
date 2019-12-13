@@ -29,7 +29,8 @@ class FllowRelationshipsTest < ApplicationSystemTestCase
     visit user_path(@user_4)
     assert_not @user_4.followed_by?(@user_1)
     assert_no_text @user_1.name
-    click_link "フォロー"
+    find(".user-profile-links__link--follow").click
+    visit user_path(@user_4)
     find(".relation-tab__item-follower").click
     assert_text @user_1.name
     assert @user_4.followed_by?(@user_1)
@@ -40,7 +41,9 @@ class FllowRelationshipsTest < ApplicationSystemTestCase
     assert @user_3.followed_by?(@user_1)
     find(".relation-tab__item-follower").click
     assert_text @user_1.name
-    click_link "フォロー解除"
+    find(".user-profile-links__link--unfollow").click
+    visit user_path(@user_3)
+    find(".relation-tab__item-follower").click
     assert_no_text @user_1.name
     assert_not @user_3.followed_by?(@user_1)
   end

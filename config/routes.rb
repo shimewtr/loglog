@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create",  as: :login
   delete "/logout",  to: "sessions#destroy", as: :logout
 
-  get "follow_relationships/create"
-  get "follow_relationships/destroy"
+  # get "follow_relationships/create"
+  # get "follow_relationships/destroy"
+
+  namespace "api" do
+    resources :follow_relationships, only: [:index, :create, :destroy]
+  end
 
   resources :users do
     get :follows, on: :member

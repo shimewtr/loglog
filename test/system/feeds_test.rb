@@ -54,7 +54,7 @@ class FeedsTest < ApplicationSystemTestCase
   test "フォローされたときフィードが追加されるか" do
     login_user("loglog.user.4@gmail.com", "aaaa")
     visit user_path(users(:user_1))
-    click_link "フォロー"
+    find(".user-profile-links__link--follow").click
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
@@ -64,7 +64,7 @@ class FeedsTest < ApplicationSystemTestCase
   test "フォローしているユーザーが他のユーザーをフォローしたときフィードが追加されるか" do
     login_user("loglog.user.2@gmail.com", "aaaa")
     visit user_path(users(:user_3))
-    click_link "フォロー"
+    find(".user-profile-links__link--follow").click
 
     login_user("loglog.user.1@gmail.com", "aaaa")
     visit root_path
@@ -94,7 +94,7 @@ class FeedsTest < ApplicationSystemTestCase
     click_button "追加"
 
     visit user_path(users(:user_1))
-    click_link "フォロー"
+    find(".user-profile-links__link--follow").click
 
     visit user_path(users(:user_3))
     accept_confirm do
