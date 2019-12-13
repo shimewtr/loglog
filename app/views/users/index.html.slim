@@ -1,4 +1,7 @@
-.users-index
+.log-list__header
+    p.logs-list__title = "ユーザー一覧(#{@users.size})"
+
+.users-index-list
   - @users.each do |user|
     = link_to user_path(user), class: "users-list__item" do
       = image_tag user.gravatar_url, alt: "タイトルロゴ", class: "users-list__icon"
