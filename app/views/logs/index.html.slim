@@ -1,7 +1,7 @@
 = render "search_form"
 
 .log-list__header
-  - if params[:q].present? && params[:q][:title_cont].present?
+  - if params[:q].present? && (params[:q][:title_cont].present? || params[:q][:user_name_cont].present? || params[:q][:updated_at_eq_day].present?)
     p.logs-list__title = "検索結果(#{@logs.size})"
   - else
     p.logs-list__title = "ログ一覧(#{@logs.size})"
