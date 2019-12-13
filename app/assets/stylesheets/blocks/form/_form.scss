@@ -14,6 +14,12 @@
   @extend .user-form;
 }
 
+.search-form {
+  margin-bottom: 1rem;
+
+  @extend .user-form;
+}
+
 form {
   width: 100%;
 
@@ -122,6 +128,7 @@ form {
     outline: none;
     border: $border-form solid $border;
     border-radius: $border-radius-form;
+    color: $font-main;
     font-size: $font-form-text-field;
 
     appearance: none;

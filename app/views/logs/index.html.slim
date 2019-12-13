@@ -1,10 +1,11 @@
+= render "search_form"
+
 .log-list__header
   - if params[:q].present? && params[:q][:title_cont].present?
     p.logs-list__title = "検索結果(#{@logs.size})"
   - else
     p.logs-list__title = "ログ一覧(#{@logs.size})"
 
-  = render "search_form"
 = render "logs/list", logs: @logs, user_data: true
 
 = paginate @logs

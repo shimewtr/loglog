@@ -1,3 +1,19 @@
-= search_form_for @q do |f|
-  = f.search_field :title_cont, placeholder: "ログを検索", class: "form__search-field"
-  = f.submit "検索", class: "form__search-button"
+.search-form
+  = search_form_for @q do |f|
+    .form-group
+      = f.label "ユーザー名", class: "form__label"
+      p.form__sub-label ログの作成者の名前で検索できます
+      = f.search_field :user_name_cont, placeholder: "ユーザー名", class: "form__text-field"
+
+    .form-group
+      = f.label "ログのタイトル", class: "form__label"
+      p.form__sub-label ログのタイトルで検索できます
+      = f.search_field :title_cont, placeholder: "ログを検索", class: "form__text-field"
+
+    .form-group
+      = f.label "更新日", class: "form__label"
+      p.form__sub-label ログの更新日で検索できます
+      = f.date_field :updated_at_eq_day, class: "form__date-field"
+
+    .form-group
+      = f.submit "検索", class: "form__button"
