@@ -1,0 +1,63 @@
+@startuml LogLog
+
+entity User {
+  * id
+  --
+  * email
+  * name
+  description
+  admin
+  * crypted_password
+}
+
+entity Log {
+  * id
+  --
+  * user_id
+  * title
+  description
+  * graph
+  * color
+}
+
+entity Value {
+  * id
+  --
+  * log_id
+  * value
+  * valued_on
+}
+
+entity Feed {
+  * id
+  --
+  * user_id
+  * sender_id
+  * action
+  followed_id
+  log_id
+}
+
+entity FollowRelation {
+  * id
+  --
+  * following_id
+  * follower_id
+}
+
+entity LogFollowing {
+  * id
+  --
+  * user_id
+  * log_id
+}
+
+User -----o{ Log
+User }----o{ FollowRelation
+Log  -----o{ Value
+User -----o{ LogFollowing
+Log  -----o{ LogFollowing
+Feed -----o| Log
+Feed }o----{ User
+
+@enduml
