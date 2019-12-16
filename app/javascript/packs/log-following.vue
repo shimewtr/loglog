@@ -1,10 +1,10 @@
 <template lang="pug">
-p(:class=" following ? 'user-profile-links__link--unfollow' : 'user-profile-links__link--follow' " @click="push")
+p(:class=" following ? 'log-header__link--unfollow' : 'log-header__link--follow' " @click="push")
   | {{label}}
 </template>
 <script>
 export default {
-  props: ["userId"],
+  props: ["logId"],
   data() {
     return {
       following: false,
@@ -12,7 +12,7 @@ export default {
     };
   },
   mounted() {
-    fetch(`/api/follow_relationships.json?user_id=${this.userId}`, {
+    fetch(`/api/log_followings.json?log_id=${this.logId}`, {
       method: "GET",
       headers: {
         "X-Requested-With": "XMLHttpRequest",
@@ -21,10 +21,11 @@ export default {
       credentials: "same-origin"
     })
       .then(response => {
+        console.log("then");
         return response.json();
       })
       .then(json => {
-        if (json[0]) {
+        if (json) {
           this.following = true;
           this.label = "フォロー解除";
         }
@@ -47,9 +48,9 @@ export default {
     },
     follow() {
       let params = {
-        user_id: this.userId
+        log_id: this.logId
       };
-      fetch(`/api/follow_relationships`, {
+      fetch(`/api/log_followings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
@@ -72,7 +73,7 @@ export default {
         });
     },
     unfollow() {
-      fetch(`/api/follow_relationships/${this.userId}.json`, {
+      fetch(`/api/log_followings/${this.logId}.json`, {
         method: "DELETE",
         headers: {
           "X-Requested-With": "XMLHttpRequest",

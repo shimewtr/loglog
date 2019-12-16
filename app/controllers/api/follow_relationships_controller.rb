@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Api::FollowRelationshipsController < ApplicationController
-  include Rails.application.routes.url_helpers
-
   protect_from_forgery with: :null_session
   before_action :require_login
 

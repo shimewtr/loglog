@@ -30,14 +30,16 @@ class LogFollowingsTest < ApplicationSystemTestCase
     assert_not @log_3.followed_by?(@user_2)
     login_user("loglog.user.2@gmail.com", "aaaa")
     visit log_path(@log_3)
-    click_link "フォロー"
+    find(".log-header__link--follow").click
+    sleep(1)
     assert @log_3.followed_by?(@user_2)
   end
 
   test "ログをアンフォローできるか" do
     assert @log_2.followed_by?(@user_1)
     visit log_path(@log_2)
-    click_link "フォロー解除"
+    find(".log-header__link--unfollow").click
+    sleep(1)
     assert_not @log_2.followed_by?(@user_1)
   end
 end

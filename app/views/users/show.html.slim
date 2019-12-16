@@ -12,12 +12,7 @@
             = link_to "編集", edit_user_path, class: "user-profile-links__link--edit"
             = link_to "削除", user_path, method: :delete, class: "user-profile-links__link--delete", data: { confirm: "削除してよろしいですか？" }
           - else
-            #js-follow-relationship(current-user-id="#{current_user.id}", user-id="#{@user.id}")
-            / #js-followrelationsip(data-watchable-id="#{@product.id}", data-watchable-type="Product")
-            / - if @user.followed_by?(current_user)
-            /   = link_to "フォロー解除", user_follow_relationships_path(@user), method: :delete, class: "user-profile-links__link--unfollow"
-            / - else
-            /   = link_to "フォロー", user_follow_relationships_path(@user), method: :post, class: "user-profile-links__link--follow"
+            #js-follow-relationship(user-id="#{@user.id}")
       - if @user.description
         p.user-profile-text__description = safe_join(@user.description.split("\n"), tag(:br))
 

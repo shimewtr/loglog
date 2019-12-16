@@ -1,7 +1,7 @@
 import Vue from "vue";
 import FollowRelationship from "./follow-relationship.vue";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", () => {
   const followRelationship = document.getElementById("js-follow-relationship");
   if (followRelationship) {
     const userId = followRelationship.getAttribute("user-id");
