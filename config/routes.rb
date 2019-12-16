@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create",  as: :login
   delete "/logout",  to: "sessions#destroy", as: :logout
 
-  get "follow_relationships/create"
-  get "follow_relationships/destroy"
+
+  namespace "api" do
+    resources :follow_relationships, only: [:index, :create, :destroy]
+    resources :log_followings, only: [:index, :create, :destroy]
+  end
 
   resources :users do
     get :follows, on: :member
@@ -17,9 +20,7 @@ Rails.application.routes.draw do
     resource :follow_relationships, only: [:create, :destroy]
   end
 
-  resources :logs do
-    resources :log_followings, only: [:create, :destroy]
-  end
+  resources :logs
 
   resources :values, only: [:create, :destroy]
 

@@ -5,4 +5,6 @@ class LogFollowing < ApplicationRecord
   belongs_to :log
   validates :user_id, presence: true
   validates :log_id, presence: true
+
+  validates :user_id, uniqueness: { scope: :log_id }
 end

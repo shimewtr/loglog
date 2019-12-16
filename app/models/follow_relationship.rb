@@ -6,4 +6,6 @@ class FollowRelationship < ApplicationRecord
 
   after_create FollowRelationshipCallbacks.new
   after_destroy FollowRelationshipCallbacks.new
+
+  validates :following_id, uniqueness: { scope: :follower_id }
 end
