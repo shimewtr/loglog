@@ -8,12 +8,16 @@ Rails.application.routes.draw do
   delete "/logout",  to: "sessions#destroy", as: :logout
 
 
+  namespace "admin" do
+    resources :users, only: [:index]
+  end
+
   namespace "api" do
     resources :follow_relationships, only: [:index, :create, :destroy]
     resources :log_followings, only: [:index, :create, :destroy]
   end
 
-  resources :users do
+  resources :users, except: [:index] do
     get :follows, on: :member
     get :followers, on: :member
     get :activate, on: :member
