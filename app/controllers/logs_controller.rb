@@ -25,6 +25,12 @@ class LogsController < ApplicationController
     end
   end
 
+  def edit
+    unless @log.user == current_user
+      redirect_to root_path, alert: ["このログの変更権限がありません。"]
+    end
+  end
+
   def update
     if @log.update(log_prams)
       redirect_to log_path(@log), notice: "#{@log.title}を更新しました。"
