@@ -45,7 +45,7 @@ $ ./bin/lint
 
 ## Test
 
-model のテストと system テストが実行されます。
+RSpec のテストが実行されます。
 
 ```
 $ ./bin/test
