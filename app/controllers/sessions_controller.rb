@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to(root_path)
+      redirect_back_or_to root_path, notice: "ログインしました。"
     else
       flash.now[:alert] = ["メールアドレスかパスワードが違います。"]
       render :new

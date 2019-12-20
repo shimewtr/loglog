@@ -346,7 +346,7 @@ Rails.application.config.sorcery.configure do |config|
     # Do you want to prevent users who did not activate by email from logging in?
     # Default: `true`
     #
-    user.prevent_non_active_users_to_login = false
+    user.prevent_non_active_users_to_login = true
 
     # -- reset_password --
     # Password reset token attribute name.
