@@ -4,7 +4,7 @@
 
 [![CircleCI](https://circleci.com/gh/wawawatataru/loglog.svg?style=svg)](https://circleci.com/gh/wawawatataru/loglog)
 
-実際のサービスは[こちら](https://www.loglog.me)から確認できます。
+実際のサービスは[こちら](https://loglogme.herokuapp.com/)から確認できます。
 
 ## LogLogとは
 日常のちょっとしたできごとや日々の移り変わりを記録できるWebサービスです。
